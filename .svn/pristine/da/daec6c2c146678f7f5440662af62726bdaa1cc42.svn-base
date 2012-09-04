@@ -1,0 +1,132 @@
+package eventos
+
+class Pessoa {
+
+    String nome
+    String sexo
+    String cpf
+    Date dataNascimento
+    String rg
+    String orgaoEmissor
+    String estadoRG = "Paraíba"
+    String estadoCivil
+    String nacionalidade = "Brasileiro"
+    String pais
+    String estadoNaturalidade = "Paraíba"
+    String cidadeNaturalidade = "Campina Grande"
+    String cep
+    String endereco
+    String numero
+    String complemento
+    String bairro
+    String cidade
+    String estado
+    String telefone1
+    String telefone2
+    String email
+
+    static constraints = {
+        nome(blank: false)
+        sexo(blank: false, inList: ["Masculino", "Feminino"])
+        dataNascimento(blank: false)
+        cpf(blank: false)
+        rg(nullable: true)
+        orgaoEmissor(blank: false)
+        estadoRG(blank: false, inList:
+            ["Acre",
+            "Alagoas",
+            "Amazonas",
+            "Amapá",
+            "Bahia",
+            "Ceará",
+            "Distrito Federal",
+            "Espirito Santo",
+            "Goiás",
+            "Maranhão",
+            "Minas Gerais",
+            "Mato Grosso do Sul",
+            "Mato Grosso",
+            "Pará",
+            "Paraíba",
+            "Pernambuco",
+            "Piauí",
+            "Paraná",
+            "Rio de Janeiro",
+            "Rio Grande do Norte",
+            "Rondônia",
+            "Roraima",
+            "Rio Grande do Sul",
+            "Santa Catarina",
+            "Sergipe",
+            "São Paulo",
+            "Tocantins"])
+        estadoCivil(blank: false, inList: ["Solteiro", "Casado", "Viuvo", "Divorciado", "Outros"])
+        nacionalidade(blank: false, inList: ["Brasileiro", "Estrangeiro"])
+        pais(nullable: true)
+        estadoNaturalidade(blank: false, inList:
+            ["Acre",
+            "Alagoas",
+            "Amazonas",
+            "Amapá",
+            "Bahia",
+            "Ceará",
+            "Distrito Federal",
+            "Espirito Santo",
+            "Goiás",
+            "Maranhão",
+            "Minas Gerais",
+            "Mato Grosso do Sul",
+            "Mato Grosso",
+            "Pará",
+            "Paraíba",
+            "Pernambuco",
+            "Piauí",
+            "Paraná",
+            "Rio de Janeiro",
+            "Rio Grande do Norte",
+            "Rondônia",
+            "Roraima",
+            "Rio Grande do Sul",
+            "Santa Catarina",
+            "Sergipe",
+            "São Paulo",
+            "Tocantins"])
+        cidadeNaturalidade(nullable: true)
+        cep(blank: false)
+        endereco(blank: false)
+        numero(blank: false)
+        bairro(blank: false)
+        cidade(blank: false)
+        telefone1(blank: false)
+        email(blank: false)
+        complemento(nullable: true)
+        estado(blank: false, inList:
+            ["Acre",
+            "Alagoas",
+            "Amazonas",
+            "Amapá",
+            "Bahia",
+            "Ceará",
+            "Distrito Federal",
+            "Espirito Santo",
+            "Goiás",
+            "Maranhão",
+            "Minas Gerais",
+            "Mato Grosso do Sul",
+            "Mato Grosso",
+            "Pará",
+            "Paraíba",
+            "Pernambuco",
+            "Piauí",
+            "Paraná",
+            "Rio de Janeiro",
+            "Rio Grande do Norte",
+            "Rondônia",
+            "Roraima",
+            "Rio Grande do Sul",
+            "Santa Catarina",
+            "Sergipe",
+            "São Paulo",
+            "Tocantins"])
+    }
+}

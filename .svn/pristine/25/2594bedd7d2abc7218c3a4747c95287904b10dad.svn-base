@@ -1,0 +1,12 @@
+#Grails Metadata file
+#Tue Aug 14 16:34:26 BRT 2012
+app.grails.version=2.1.0
+app.name=eventos
+app.version=0.1
+plugins.barcode4j=0.2.1
+plugins.burning-image=0.5.0
+plugins.jetty=2.0.0
+plugins.jquery-ui=1.8.15
+plugins.jquery-validation=1.9
+plugins.searchable=0.6.3
+plugins.spring-security-core=1.2.7.3

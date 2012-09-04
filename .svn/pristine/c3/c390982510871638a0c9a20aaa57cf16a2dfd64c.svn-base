@@ -1,0 +1,108 @@
+<%@ page import="eventos.Evento" %>
+<!doctype html>
+<html>
+  <head>
+    <meta name="layout" content="main">
+  <g:set var="entityName" value="${message(code: 'evento.label', default: 'Evento')}" />
+  <g:javascript library="jquery" plugin="jquery"/>
+  <title><g:message code="default.edit.label" args="[entityName]" /></title>
+</head>
+<body>
+  <a href="#edit-evento" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+  <div class="nav" role="navigation">
+    <ul>
+      <li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+      <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+    </ul>
+  </div>
+  <div id="edit-evento" class="content scaffold-edit" role="main">
+    <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+    <g:if test="${flash.message}">
+      <div class="message" role="status">${flash.message}</div>
+    </g:if>
+    <g:hasErrors bean="${eventoInstance}">
+      <ul class="errors" role="alert">
+        <g:eachError bean="${eventoInstance}" var="error">
+          <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+        </g:eachError>
+      </ul>
+    </g:hasErrors>
+    <g:form method="post" >
+      <g:hiddenField name="id" value="${eventoInstance?.id}" />
+      <g:hiddenField name="version" value="${eventoInstance?.version}" />
+      <fieldset class="form">
+        <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'nome', 'error')} required">
+          <label for="nome">
+            <g:message code="evento.nome.label" default="Nome" />
+            <span class="required-indicator">*</span>
+          </label>
+          <g:textField name="nome" required="" value="${eventoInstance?.nome}"/>
+        </div>
+        <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'data', 'error')} required">
+          <label for="data">
+            <g:message code="evento.data.label" default="Data" />
+            <span class="required-indicator">*</span>
+          </label>
+          <g:textField name="data" required="" value="${eventoInstance?.data}"/>
+        </div>
+        <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'local', 'error')} required">
+          <label for="local">
+            <g:message code="evento.local.label" default="Local" />
+            <span class="required-indicator">*</span>
+          </label>
+          <g:textField name="local" required="" value="${eventoInstance?.local}"/>
+        </div>
+        <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'logomarca', 'error')} required">
+          <label for="logomarca">
+            <g:message code="evento.logomarca.label" default="Logomarca" />
+            <span class="required-indicator">*</span>
+          </label>
+          <span id="divLogomarca">
+            <g:imagem id="${eventoInstance.logomarca.id}" largura="100" altura="100"/>
+            <input type="button" class="botao" value="Alterar" onclick="$('#divLogomarca').html('<input type=\'file\' name=\'imagem\' id=\'imagem\' />')" />
+          </span>
+        </div>
+        <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'configuracao', 'error')} required">
+          <label for="configuracao">
+            <g:message code="evento.configuracao.label" default="Configuracao" />
+            <span class="required-indicator">*</span>
+          </label>
+          <g:select id="configuracao" name="configuracao.id" from="${eventos.Configuracao.list()}" optionKey="id" required="" value="${eventoInstance?.configuracao?.id}" class="many-to-one"/>
+        </div>
+        <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'status', 'error')} required">
+          <label for="status">
+            <g:message code="evento.status.label" default="Status" />
+            <span class="required-indicator">*</span>
+          </label>
+          <g:select name="status" from="${eventoInstance.constraints.status.inList}" required="" value="${eventoInstance?.status}" valueMessagePrefix="evento.status"/>
+        </div>
+        <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'dataTermino', 'error')} required">
+          <label for="dataTermino">
+            <g:message code="evento.dataTermino.label" default="Data Termino" />
+            <span class="required-indicator">*</span>
+          </label>
+          <g:datePicker name="dataTermino" precision="hour"  value="${eventoInstance?.dataTermino}"  />
+        </div>
+        <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'desconto', 'error')} required">
+          <label for="desconto">
+            <g:message code="evento.desconto.label" default="Desconto p/ Sócios" />
+            <span class="required-indicator">*</span>
+          </label>
+          <g:field name="desconto" type="number" value="${eventoInstance.desconto}" required=""/>
+        </div>
+        <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'css', 'error')} required">
+          <label for="css">
+            <g:message code="evento.css.label" default="CSS" />
+            <span class="required-indicator">*</span>
+          </label>
+          <g:textArea name="css" value="${eventoInstance.css}" rows="5" cols="40"/>
+        </div>
+      </fieldset>
+      <fieldset class="buttons">
+        <g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+        <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+      </fieldset>
+    </g:form>
+  </div>
+</body>
+</html>

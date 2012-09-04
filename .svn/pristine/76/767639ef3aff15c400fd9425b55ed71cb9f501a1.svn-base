@@ -1,0 +1,18 @@
+package eventos
+
+class TagsTagLib {
+    def imagem = { attrs ->
+      out << "<img src='"
+      out << g.createLink(
+        action: "showImagem",
+        controller: "imagem",
+        id: attrs.id,
+        params: [largura: attrs.largura, altura: attrs.altura])
+      out << "'"
+
+      if (attrs['class'])
+        out << " class='${attrs['class']}'"
+
+      out << "/>"
+    }
+}

@@ -1,0 +1,770 @@
+@CHARSET "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Verdana, Arial, sans-serif;
+    color: #666;
+    font-size: 1em;
+    background: #FFF;
+}
+
+a:link, a:visited, a:hover {
+    color: #48802c;
+}
+
+a:hover, a:active {
+    outline: none; /* prevents outline in webkit on active links but retains it for tab focus */
+}
+
+h1 {
+    color: #5787B3;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 1.1em 0 0.8em 0;
+}
+
+ul {
+    padding: 0;
+}
+
+img {
+    border: 0;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+/* barra de navegação do topo */
+#barraNavegacao {
+    width: 100%;
+    height: 40px;
+    background: #5787B3;
+}
+
+#barraNavegacao .conteudo {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#barraNavegacao .conteudo p {
+    font-size: 0.8em;
+    margin: 0;
+    padding: 10px 0;
+    text-align: right;
+    color: #FFFFFF;
+}
+
+#barraNavegacao .conteudo img {
+    border: none;
+    float: left;
+    padding: 5px 0;
+}
+
+#barraNavegacao a {
+    text-decoration: none;
+    color:#ADCDDD;
+}
+
+#barraNavegacao a:hover {
+    text-decoration: none;
+    color:#ADCDDD;
+}
+
+#barraNavegacao a:visited {
+
+}
+
+#boxCentral {
+    width: 750px;
+    height: 230px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 150px;
+}
+
+#boxCentral .logoTexto {
+    width: 385px;
+    height: 200px;
+    float: left;
+    margin: 10px 0px;
+    border-right: 1px solid #5787B3;
+}
+
+#boxCentral .logoTexto h1 {
+    font-family: 'Quando', sans-serif;
+    font-size: 2.6em;
+    color: #5787B3;
+    margin: 30px 40px -5px 0;
+    text-align: right;
+}
+
+#boxCentral .logoTexto span {
+    font-size: 0.8em;
+    color: #ccc;
+    float: right;
+    margin: 0 40px 20px 0;
+}
+
+#boxCentral .logoTexto p {
+    font-size: 0.8em;
+    color: #666;
+    float: right;
+    margin: 30px 40px 0 0;
+}
+
+
+/* área de login */
+#boxCentral .login {
+    width: 310px;
+    height: 200px;
+    float: right;
+}
+
+#boxCentral .login h1 {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+#boxCentral .login .login_message {
+    float: left;
+    font-size: 10px;
+    padding: 6px 0 0 0;
+    color: #c33;
+}
+
+/** Estrutura das páginas internas do CMS **/
+#content {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#sidebarEsq {
+    float: left;
+    width: 180px;
+    height: 660px;
+    margin-right: 30px;
+    border-left: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+
+    background: url('../images/proprio/bgSidebar.png') repeat-y top right;
+}
+
+#sidebarEsq h1 {
+    width: 169px;
+    margin: 50px 0 40px 0;
+    padding-left: 3px;
+    text-align: center;
+    font-family: 'Quando', sans-serif;
+    font-size: 1.5em;
+    color: #5787B3;
+}
+
+/** Menus laterais **/
+#nav-primary {
+    overflow:hidden;
+    margin-top: 30px;
+}
+#nav-primary.vertical {
+    width:175px;
+}
+.vertical img {
+    float: left;
+    margin-right: 3px;
+    padding: 10px 5px 10px 10px;
+}
+.vertical li {
+    list-style-type:none;
+    border-bottom: 1px solid #e2e2e2;
+    font-size: 0.9em;
+}
+.vertical li a {
+    padding:10px 0 10px 5px;
+    text-align:left;
+    display:block;
+    color:#5787B3;
+    text-decoration: none;
+}
+.vertical li a:hover {
+    color:#5787B3;
+    text-decoration: none;
+    background: #eaf2fa;
+}
+
+
+/* barra lateral direita da página */
+#corpo {
+    float: left;
+    width: 748px;
+    padding: 0;
+    margin: 50px 0 20px 0;
+    font-size: 0.9em;
+}
+
+/* Footer */
+#footer {
+    width: 100%;
+    height: 25px;
+    border-top: 1px solid #ccc;
+    float: left;
+}
+#footer .texto{
+    width: 960px;
+    margin: 0 auto;
+}
+#footer .texto p {
+    font-size: 0.7em;
+    margin-top: 8px;
+    color: #666;
+}
+
+#footer .texto a {
+    text-decoration: none;
+    color:#ADCDDD;
+}
+
+#footer .texto a:hover {
+    text-decoration: none;
+    color:#ADCDDD;
+}
+
+#footer .texto a:visited {
+
+}
+
+/* formulario de login */
+.cssform p {
+    float: left;
+    margin: 4px 0 5px 0;
+    padding: 2px 0 8px 0;
+    font-size: 0.8em;
+}
+
+.cssform label {
+    font-weight: normal;
+    float: left;
+    width: 100px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+    color: #666;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+.cssform input[type="text"]{ /*width of text boxes. IE6 does not understand this attribute*/
+    width: 250px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.cssform input[type="password"]{ /*width of text boxes. IE6 does not understand this attribute*/
+    width: 250px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.cssform .botao {
+    float: left;	
+    width: 70px;
+    height: 25px;
+    background: #5787B3;
+    border: none;
+    color: #FFF;
+    margin: 0 20px 0 0;
+}
+.cssform .chk {
+    float: left;
+    width: 30px;
+    border: solid 1px black;
+}
+
+
+.spinner {
+    background: url(../images/spinner.gif) 50% 50% no-repeat transparent;
+    height: 16px;
+    width: 16px;
+    padding: 0.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-indent: -9999px;
+}
+
+/* NAVIGATION MENU */
+
+.nav {
+    background-color: #efefef;
+    padding: 0.5em 0.75em;
+    -moz-box-shadow: 0 0 3px 1px #aaaaaa;
+    -webkit-box-shadow: 0 0 3px 1px #aaaaaa;
+    box-shadow: 0 0 3px 1px #aaaaaa;
+    zoom: 1;
+}
+
+.nav ul {
+    overflow: hidden;
+    padding-left: 0;
+    zoom: 1;
+}
+
+.nav li {
+    display: block;
+    float: left;
+    list-style-type: none;
+    margin-right: 0.5em;
+    padding: 0;
+}
+
+.nav a {
+    color: #666666;
+    display: block;
+    padding: 0.25em 0.7em;
+    text-decoration: none;
+    -moz-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+
+.nav a:active, .nav a:visited {
+    color: #666666;
+}
+
+.nav a:focus, .nav a:hover {
+    background-color: #999999;
+    color: #ffffff;
+    outline: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.no-borderradius .nav a:focus, .no-borderradius .nav a:hover {
+    background-color: transparent;
+    color: #444444;
+    text-decoration: underline;
+}
+
+.nav a.home, .nav a.list, .nav a.create, .nav a.search, .nav a.voltar, .nav a.add {
+    background-position: 0.7em center;
+    background-repeat: no-repeat;
+    text-indent: 25px;
+}
+
+.nav a.home {
+    background-image: url(../images/skin/house.png);
+}
+
+.nav a.search {
+    background-image: url(../images/skin/zoom.png);
+}
+
+.nav a.voltar {
+    background-image: url(../images/skin/voltar.png);
+}
+
+.nav a.list {
+    background-image: url(../images/skin/database_table.png);
+}
+
+.nav a.create {
+    background-image: url(../images/skin/database_add.png);
+}
+
+/* CREATE/EDIT FORMS AND SHOW PAGES */
+
+fieldset,
+.property-list {
+    margin: 0.6em 1.25em 0 1.25em;
+    padding: 0.3em 1.8em 1.25em;
+    position: relative;
+    zoom: 1;
+    border: none;
+}
+
+.property-list .fieldcontain {
+    list-style: none;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.fieldcontain {
+    margin-top: 1em;
+}
+
+.fieldcontain label,
+.fieldcontain .property-label {
+    color: #666666;
+    text-align: right;
+    width: 25%;
+}
+
+.fieldcontain .property-label {
+    float: left;
+}
+
+.fieldcontain .property-value {
+    display: block;
+    margin-left: 27%;
+}
+
+label {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 0.25em 0 0;
+}
+
+input, select, textarea {
+    background-color: #fcfcfc;
+    border: 1px solid #cccccc;
+    font-size: 1em;
+    padding: 0.2em 0.4em;
+}
+
+select {
+    padding: 0.2em 0.2em 0.2em 0;
+}
+
+select[multiple] {
+    vertical-align: top;
+}
+
+textarea {
+    width: 250px;
+    height: 150px;
+    overflow: auto; /* IE always renders vertical scrollbar without this */
+    vertical-align: top;
+}
+
+input[type=checkbox], input[type=radio] {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+}
+
+input:focus, select:focus, textarea:focus {
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    outline: 0;
+    -moz-box-shadow: 0 0 0.5em #ffffff;
+    -webkit-box-shadow: 0 0 0.5em #ffffff;
+    box-shadow: 0 0 0.5em #ffffff;
+}
+
+.required-indicator {
+    color: #48802C;
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 0.3em;
+    position: relative;
+    top: 0.1em;
+}
+
+ul.one-to-many {
+    display: inline-block;
+    list-style-position: inside;
+    vertical-align: top;
+}
+
+.ie6 ul.one-to-many, .ie7 ul.one-to-many {
+    display: inline;
+    zoom: 1;
+}
+
+ul.one-to-many li.add {
+    list-style-type: none;
+}
+
+/* EMBEDDED PROPERTIES */
+
+fieldset.embedded {
+    background-color: transparent;
+    border: 1px solid #CCCCCC;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+fieldset.embedded legend {
+    margin: 0 1em;
+}
+
+/* MESSAGES AND ERRORS */
+
+.errors,
+.message {
+    font-size: 0.8em;
+    line-height: 2;
+    margin: 1em 2em;
+    padding: 0.25em;
+}
+
+.message {
+    background: #f3f3ff;
+    border: 1px solid #b2d1ff;
+    color: #006dba;
+    -moz-box-shadow: 0 0 0.25em #b2d1ff;
+    -webkit-box-shadow: 0 0 0.25em #b2d1ff;
+    box-shadow: 0 0 0.25em #b2d1ff;
+}
+
+.errors {
+    background: #fff3f3;
+    border: 1px solid #ffaaaa;
+    color: #cc0000;
+    -moz-box-shadow: 0 0 0.25em #ff8888;
+    -webkit-box-shadow: 0 0 0.25em #ff8888;
+    box-shadow: 0 0 0.25em #ff8888;
+}
+
+.errors ul,
+.message {
+    padding: 0;
+}
+
+.errors li {
+    list-style: none;
+    background: transparent url(../images/skin/exclamation.png) 0.5em 50% no-repeat;
+    text-indent: 2.2em;
+}
+
+.message {
+    background: transparent url(../images/skin/information.png) 0.5em 50% no-repeat;
+    text-indent: 2.2em;
+}
+
+/* form fields with errors */
+
+.error input, .error select, .error textarea {
+    background: #fff3f3;
+    border-color: #ffaaaa;
+    color: #cc0000;
+}
+
+.error input:focus, .error select:focus, .error textarea:focus {
+    -moz-box-shadow: 0 0 0.5em #ffaaaa;
+    -webkit-box-shadow: 0 0 0.5em #ffaaaa;
+    box-shadow: 0 0 0.5em #ffaaaa;
+}
+
+/* same effects for browsers that support HTML5 client-side validation (these have to be specified separately or IE will ignore the entire rule) */
+
+input:invalid, select:invalid, textarea:invalid {
+    background: #fff3f3;
+    border-color: #ffaaaa;
+    color: #cc0000;
+}
+
+input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
+    -moz-box-shadow: 0 0 0.5em #ffaaaa;
+    -webkit-box-shadow: 0 0 0.5em #ffaaaa;
+    box-shadow: 0 0 0.5em #ffaaaa;
+}
+
+/* TABLES */
+
+table {
+    border-top: 1px solid #DFDFDF;
+    border-collapse: collapse;
+    width: 748px;
+    margin-bottom: 1em;
+    font-size: 0.8em;
+}
+
+tr {
+    border: 0;
+}
+
+tr>td:first-child, tr>th:first-child {
+    padding-left: 1.25em;
+}
+
+tr>td:last-child, tr>th:last-child {
+    padding-right: 1.25em;
+    word-wrap: break-word;
+}
+
+td, th {
+    line-height: 1.5em;
+    padding: 0.5em 0.6em;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #efefef;
+    background-image: -moz-linear-gradient(top, #ffffff, #eaeaea);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(1, #eaeaea));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#ffffff', EndColorStr = '#eaeaea');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
+    color: #666666;
+    font-weight: bold;
+    line-height: 1.7em;
+    padding: 0.2em 0.6em;
+}
+
+thead th {
+    white-space: nowrap;
+}
+
+th a {
+    display: block;
+    text-decoration: none;
+}
+
+th a:link, th a:visited {
+    color: #666666;
+}
+
+th a:hover, th a:focus {
+    color: #333333;
+}
+
+th.sortable a {
+    background-position: right;
+    background-repeat: no-repeat;
+    padding-right: 1.1em;
+}
+
+th.asc a {
+    background-image: url(../images/skin/sorted_asc.gif);
+}
+
+th.desc a {
+    background-image: url(../images/skin/sorted_desc.gif);
+}
+
+.odd {
+    background: #f7f7f7;
+}
+
+.even {
+    background: #ffffff;
+}
+
+th:hover, tr:hover {
+    background: #eaf2fa;
+}
+
+/* PAGINATION */
+
+.pagination {
+    border-top: 0;
+    margin: 0;
+    padding: 0.3em 0.2em;
+    text-align: center;
+    -moz-box-shadow: 0 0 3px 1px #AAAAAA;
+    -webkit-box-shadow: 0 0 3px 1px #AAAAAA;
+    box-shadow: 0 0 3px 1px #AAAAAA;
+    background-color: #EFEFEF;
+}
+
+.pagination a,
+.pagination .currentStep {
+    color: #666666;
+    display: inline-block;
+    margin: 0 0.1em;
+    padding: 0.25em 0.7em;
+    text-decoration: none;
+    -moz-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+
+.pagination a:hover, .pagination a:focus,
+.pagination .currentStep {
+    background-color: #999999;
+    color: #ffffff;
+    outline: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.no-borderradius .pagination a:hover, .no-borderradius .pagination a:focus,
+.no-borderradius .pagination .currentStep {
+    background-color: transparent;
+    color: #444444;
+    text-decoration: underline;
+}
+
+/* ACTION BUTTONS */
+
+.buttons {
+    background-color: #efefef;
+    overflow: hidden;
+    padding: 0.3em;
+    -moz-box-shadow: 0 0 3px 1px #aaaaaa;
+    -webkit-box-shadow: 0 0 3px 1px #aaaaaa;
+    box-shadow: 0 0 3px 1px #aaaaaa;
+    margin: 0.1em 0 0 0;
+    border: none;
+}
+
+.buttons input,
+.buttons a {
+    background-color: transparent;
+    border: 0;
+    color: #666666;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 0.25em 0;
+    overflow: visible;
+    padding: 0.25em 0.7em;
+    text-decoration: none;
+
+    -moz-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+
+.buttons input:hover, .buttons input:focus,
+.buttons a:hover, .buttons a:focus {
+    background-color: #999999;
+    color: #ffffff;
+    outline: none;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.no-borderradius .buttons input:hover, .no-borderradius .buttons input:focus,
+.no-borderradius .buttons a:hover, .no-borderradius .buttons a:focus {
+    background-color: transparent;
+    color: #444444;
+    text-decoration: underline;
+}
+
+.buttons .delete, .buttons .edit, .buttons .save, .buttons .create {
+    background-position: 0.7em center;
+    background-repeat: no-repeat;
+    text-indent: 25px;
+}
+
+.ie6 .buttons input.delete, .ie6 .buttons input.edit, .ie6 .buttons input.save,
+.ie7 .buttons input.delete, .ie7 .buttons input.edit, .ie7 .buttons input.save {
+    padding-left: 36px;
+}
+
+.buttons .delete {
+    background-image: url(../images/skin/database_delete.png);
+}
+
+.buttons .edit {
+    background-image: url(../images/skin/database_edit.png);
+}
+
+.buttons .save {
+    background-image: url(../images/skin/database_save.png);
+}
+
+.buttons .create {
+    background-image: url(../images/skin/database_add.png);
+}
+
+a.skip {
+    position: absolute;
+    left: -9999px;
+}
