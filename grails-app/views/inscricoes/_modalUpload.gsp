@@ -10,8 +10,10 @@
         <uploader:onProgress>console.log(loaded + ' of ' + total + ' done so far') </uploader:onProgress>
         <uploader:onComplete>
           fezUpload = true;
+          total    += ${valor};
           $("#${id}").modal('hide');
           $('#div_caixas').html(criarAlerta("Sucesso!", "Seu arquivo foi enviado com sucesso !"));
+          $('#wizard').smartWizard('showMessage','Total: R$ ' + total);
         </uploader:onComplete>
         <uploader:onCancel>alert('Você cancelou o envio do arquivo'); </uploader:onCancel>
         <uploader:noScript>
