@@ -98,6 +98,33 @@ class TagsTagLib {
       out << g.select(name: attrs.nome, from: Constantes.ESTADO, noSelection: ['':'Selecione o estado'], 'class': style)
     }
     
+    def caixas = { attrs, body ->
+      out << "<div class='row-fluid' id='${attrs.id ?: "div_caixas"}'>"
+      out << "<ul class='thumbnails'>"
+      out << body.call()
+      out << "</ul>"
+      out << "</div>"
+    }
+    
+    def caixa = { attrs, body ->
+      def span = attrs.span ?: 4
+      
+      out << "<li class='span${span}'>"
+      out << "<div class='thumbnail'>"
+      out << "<div class='caption'>"
+      out << "<h3>${attrs.titulo}</h3>"
+      out << body.call()
+      out << "</div>"
+      out << "</div>"
+      out << "</li>"
+    }
+    
+    def botaoModal = { attrs -> 
+      out << "<a href='#${attrs.idModal}' role='button' class='btn btn-large btn-block btn-primary' data-toggle='modal'>"
+      out << attrs.label
+      out << "</a>"
+    }
+    
     private def toUnderscoredString(string) {
       def semAcentos   = Normalizer.normalize(string, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
       def semEspacos   = semAcentos.replaceAll(/\s/) { '_' }

@@ -14,6 +14,7 @@ modules = {
     
     wizard {
       dependsOn 'jquery'
+      dependsOn 'fileuploader'
       resource url:'js/jquery/jquery.validationEngine-pt.js'
       resource url:'js/jquery/jquery.validationEngine.js'
       resource url:'js/jquery/validationEngine.jquery.css'
