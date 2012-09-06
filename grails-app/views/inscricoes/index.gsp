@@ -62,6 +62,9 @@
   <g:render template="modalUpload" model="['id': 'modal_aluno_pos_doc',  'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 140]"/>
   <g:render template="modalUpload" model="['id': 'modal_medico',         'titulo': 'Envie o seu comprovante de atuação profissional digitalizado', 'valor': 160]"/>
   
+  <g:render template="modalSocio" model="['tipoSocio': 'sbg']"/>
+  <g:render template="modalSocio" model="['tipoSocio': 'sbmcta']"/>
+  
   <r:layoutResources/>
 </body>
 </html>

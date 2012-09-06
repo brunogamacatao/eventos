@@ -1,6 +1,6 @@
 <%@ page import="eventos.Constantes" %>
 <div class="span5">
-  <g:field label="Nome"/>
+  <g:field label="Nome Completo"/>
   <g:field label="Sexo">
     <g:select name="sexo" from="${Constantes.SEXO}" noSelection="['':'Selecione o sexo']" class="validate[required]"/>
   </g:field>

@@ -1,5 +1,7 @@
-var fezUpload = false;
-var total     = 0.0;
+var fezUpload       = true;
+var fezUploadSbg    = false;
+var fezUploadSbmcta = false;
+var total           = 0.0;
 
 $(document).ready(function(){
   $('#wizard').smartWizard({
@@ -18,19 +20,20 @@ $(document).ready(function(){
         alert("Você deve enviar o comprovante para que possa terminar a inscrição");
       }
       
-      $('#wizard').smartWizard('showMessage','Total: R$ ' + total);
+      exibirTotal();
       
       return fezUpload;
     } else {
-      var valid = $("#form_inscricao").validationEngine('validate');
-      
-      if (!valid) {
-        $('#wizard').smartWizard('showMessage', 'Por favor, corrija os erros e clique no botão Próximo');
-      }
-      
-      $('#wizard').smartWizard('setError', {stepnum: step_num, iserror: !valid});
-      
-      return valid;
+      // var valid = $("#form_inscricao").validationEngine('validate');
+      // 
+      // if (!valid) {
+      //   $('#wizard').smartWizard('showMessage', 'Por favor, corrija os erros e clique no botão Próximo');
+      // }
+      // 
+      // $('#wizard').smartWizard('setError', {stepnum: step_num, iserror: !valid});
+      // 
+      // return valid;
+      return true;
     }
   }
   
@@ -46,9 +49,34 @@ $(document).ready(function(){
   $('#cep').mask('99999-999');
   $('.telefone').mask('(99)9999-9999');
   
-  //Ligando a validacao do formulario
-  //$("#form_inscricao").validationEngine();
+  $('#botao_profissional').click(function() {
+    acaoFezUpload(null, 160);
+  });
+  
+  $('.btn_marcar').click(function(){
+    // Desmarcar tudo
+    $(document).find(".btn_desmarcar").each(function() {desmarcar($(this));});
+    // Marcar apenas esse elemento
+    marcar($(this));
+  });
+
+  $('.btn_desmarcar').click(function(){
+    desmarcar($(this));
+  });
 });
+
+var acaoFezUpload = function(idModal, valor) {
+  fezUpload = true;
+  total    += valor;
+  
+  if (idModal) {
+    $(idModal).modal('hide');
+  }
+  
+  $("#div_socio").show();
+  $('#div_caixas').html(criarAlerta("Sucesso!", "Seu arquivo foi enviado com sucesso !"));
+  exibirTotal();
+};
 
 var criarAlerta = function(titulo, mensagem) {
   return "<div class='alert alert-success alert-block'>" +
@@ -61,27 +89,14 @@ var exibirAlerta = function(indiceWizard, titulo, mensagem) {
   $('#step-' + indiceWizard).prepend(criarAlerta(titulo, mensagem));
 };
 
-$('.btn_marcar').click(function(){
-  // Desmarcar tudo
-  $(document).find(".btn_desmarcar").each(function() {desmarcar($(this));});
-  // Marcar apenas esse elemento
-  marcar($(this));
-});
-
-$('.btn_desmarcar').click(function(){
-  desmarcar($(this));
-});
-
 var marcar = function(element) {
   element.hide();
   element.parent().children(".btn_desmarcar").show();
   element.parent().css('background-color', '#8CC63F');
   element.parent().children('p,h3').css('color', '#FFF');
-  
   total += 20;
-  
-  $('#wizard').smartWizard('showMessage','Total: R$ ' + total);
-}
+  exibirTotal();
+};
 
 var desmarcar = function(element) {
   if (element.is(':visible')) {
@@ -89,9 +104,17 @@ var desmarcar = function(element) {
     element.parent().children(".btn_marcar").show();
     element.parent().css('background-color', '#FFF');
     element.parent().children('p,h3').css('color', '#555555');
-  
     total -= 20;
-    
-    $('#wizard').smartWizard('showMessage','Total: R$ ' + total);
+    exibirTotal();
   }
-}
+};
+
+var exibirTotal = function() {
+  var totalFinal = total;
+  
+  if (fezUploadSbg || fezUploadSbmcta) {
+    totalFinal *= 0.8;
+  }
+  
+  $('#wizard').smartWizard('showMessage','Total: R$ ' + totalFinal);
+};
