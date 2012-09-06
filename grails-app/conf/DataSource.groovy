@@ -29,7 +29,7 @@ environments {
   production {
     dataSource {
       dbCreate = "update"
-      url = "jdbc:mysql://187.33.255.17:4406/eventos"
+      url = "jdbc:mysql://localhost/eventos"
     }
   }
 }

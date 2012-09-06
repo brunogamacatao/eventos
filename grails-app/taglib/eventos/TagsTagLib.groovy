@@ -109,10 +109,10 @@ class TagsTagLib {
     def caixa = { attrs, body ->
       def span = attrs.span ?: 4
       
-      out << "<li class='span${span}'>"
+      out << "<li class='span${span} ${attrs.'class' ?: ''}'>"
       out << "<div class='thumbnail'>"
       out << "<div class='caption'>"
-      out << "<h3>${attrs.titulo}</h3>"
+      out << "<h5 class='titulo_${attrs.'class' ?: ''}'>${attrs.titulo}</h5>"
       out << body.call()
       out << "</div>"
       out << "</div>"
@@ -120,7 +120,7 @@ class TagsTagLib {
     }
     
     def botaoModal = { attrs -> 
-      out << "<a href='#${attrs.idModal}' role='button' class='btn btn-large btn-block btn-primary' data-toggle='modal'>"
+      out << "<a href='#${attrs.idModal}' role='button' class='btn btn-large btn-block btn-primary botao_modal' data-toggle='modal'>"
       out << attrs.label
       out << "</a>"
     }

@@ -7,8 +7,33 @@
   <title>Formulário de Inscrição</title>
   <r:require module="wizard"/>
   <r:layoutResources/>
+  <style type="text/css" media="screen">
+    .minicurso,.tipo_participante {
+      margin: 0px;
+    }
+    
+    .minicurso > div {
+      height: 300px;
+    }
+    
+    .tipo_participante > div {
+      height: 200px;
+    }
+
+    .titulo_tipo_participante {
+      height: 60px;
+    }
+    
+    .titulo_minicurso {
+      height: 90px;
+    }
+    
+    .professor_minicurso {
+      height: 63px;
+    }
+  </style>
 </head>
-<body>
+<body style="background-color:transparent">
   <form id="form_inscricao" action="index_submit" method="get" accept-charset="utf-8" class="form-horizontal">
     <g:wizard>
       <g:wizardTitle>
@@ -32,9 +57,10 @@
     </g:wizard>
   </form>
 
-  <g:render template="modalUpload" model="['id': 'modal_aluno',     'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 60]"/>
-  <g:render template="modalUpload" model="['id': 'modal_professor', 'titulo': 'Envie algum documento que comprove seu vínculo com alguma instituição de ensino como professor', 'valor': 120]"/>
-  <g:render template="modalUpload" model="['id': 'modal_medico',    'titulo': 'Envie o seu CRM digitalizado', 'valor': 180]"/>
+  <g:render template="modalUpload" model="['id': 'modal_aluno_grad',     'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 100]"/>
+  <g:render template="modalUpload" model="['id': 'modal_aluno_pos_grad', 'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 120]"/>
+  <g:render template="modalUpload" model="['id': 'modal_aluno_pos_doc',  'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 140]"/>
+  <g:render template="modalUpload" model="['id': 'modal_medico',         'titulo': 'Envie o seu comprovante de atuação profissional digitalizado', 'valor': 160]"/>
   
   <r:layoutResources/>
 </body>

@@ -1,5 +1,5 @@
 <%@ page import="eventos.Constantes" %>
-<div class="span12">
+<div class="span5">
   <g:field label="Nome"/>
   <g:field label="Sexo">
     <g:select name="sexo" from="${Constantes.SEXO}" noSelection="['':'Selecione o sexo']" class="validate[required]"/>
@@ -13,7 +13,7 @@
     <g:select name="sexo" from="${Constantes.ESTADO_CIVIL}" noSelection="['':'Selecione o estado civil']" class="validate[required]"/>
   </g:field>
 </div>
-<div class="span12">
+<div class="span4">
   <g:field label="Nacionalidade">
     <g:select name="nacionalidade" from="${Constantes.NACIONALIDADE}" noSelection="['':'Selecione o nacionalidade']" class="validate[required]"/>
   </g:field>

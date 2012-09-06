@@ -14,7 +14,7 @@
   border: 0px solid #CCC;
   overflow:visible;
   float:left;
-  width:980px;
+  width:900px;
 }
 .swMain .stepContainer {
   display:block;
@@ -43,7 +43,7 @@
   z-index:88; 
   -webkit-border-radius: 5px;
   -moz-border-radius  : 5px;
-  width:968px;
+  width:888px;
   clear:both;
 }
 
@@ -110,7 +110,7 @@
   margin:0;
   padding:3px;
   height:60px;
-  width:230px;
+  width:210px;
   text-decoration: none;
   outline-style:none;
   -moz-border-radius  : 5px;

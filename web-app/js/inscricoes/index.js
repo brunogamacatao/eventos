@@ -1,4 +1,4 @@
-var fezUpload = true;
+var fezUpload = false;
 var total     = 0.0;
 
 $(document).ready(function(){
@@ -22,16 +22,15 @@ $(document).ready(function(){
       
       return fezUpload;
     } else {
-      // var valid = $("#form_inscricao").validationEngine('validate');
-      // 
-      // if (!valid) {
-      //   $('#wizard').smartWizard('showMessage', 'Por favor, corrija os erros e clique no botão Próximo');
-      // }
-      // 
-      // $('#wizard').smartWizard('setError', {stepnum: step_num, iserror: !valid});
-      // 
-      // return valid;
-      return true;
+      var valid = $("#form_inscricao").validationEngine('validate');
+      
+      if (!valid) {
+        $('#wizard').smartWizard('showMessage', 'Por favor, corrija os erros e clique no botão Próximo');
+      }
+      
+      $('#wizard').smartWizard('setError', {stepnum: step_num, iserror: !valid});
+      
+      return valid;
     }
   }
   
@@ -63,21 +62,36 @@ var exibirAlerta = function(indiceWizard, titulo, mensagem) {
 };
 
 $('.btn_marcar').click(function(){
-  $(this).hide();
-  $(this).parent().children(".btn_desmarcar").show();
-  $(this).parent().css('background-color', '#8CC63F');
-  $(this).parent().children('p,h3').css('color', '#FFF');
-  
-  total += parseFloat($(this).parent().children('.valor').val());
-  $('#wizard').smartWizard('showMessage','Total: R$ ' + total);
+  // Desmarcar tudo
+  $(document).find(".btn_desmarcar").each(function() {desmarcar($(this));});
+  // Marcar apenas esse elemento
+  marcar($(this));
 });
 
 $('.btn_desmarcar').click(function(){
-  $(this).hide();
-  $(this).parent().children(".btn_marcar").show();
-  $(this).parent().css('background-color', '#FFF');
-  $(this).parent().children('p,h3').css('color', '#555555');
-  
-  total -= parseFloat($(this).parent().children('.valor').val());
-  $('#wizard').smartWizard('showMessage','Total: R$ ' + total);
+  desmarcar($(this));
 });
+
+var marcar = function(element) {
+  element.hide();
+  element.parent().children(".btn_desmarcar").show();
+  element.parent().css('background-color', '#8CC63F');
+  element.parent().children('p,h3').css('color', '#FFF');
+  
+  total += 20;
+  
+  $('#wizard').smartWizard('showMessage','Total: R$ ' + total);
+}
+
+var desmarcar = function(element) {
+  if (element.is(':visible')) {
+    element.hide();
+    element.parent().children(".btn_marcar").show();
+    element.parent().css('background-color', '#FFF');
+    element.parent().children('p,h3').css('color', '#555555');
+  
+    total -= 20;
+    
+    $('#wizard').smartWizard('showMessage','Total: R$ ' + total);
+  }
+}
