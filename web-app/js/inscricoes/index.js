@@ -1,7 +1,9 @@
-var fezUpload       = true;
-var fezUploadSbg    = false;
-var fezUploadSbmcta = false;
-var total           = 0.0;
+var fezUpload        = true;
+var fezUploadSbg     = false;
+var fezUploadSbmcta  = false;
+var total            = 0.0;
+var tipoProfissional = '';
+var minicurso        = '';
 
 $(document).ready(function(){
   $('#wizard').smartWizard({
@@ -37,8 +39,9 @@ $(document).ready(function(){
     }
   }
   
-  function onFinishCallback(){
-   if($("#form_inscricao").validationEngine('validate')){
+  function onFinishCallback() {
+   if ($("#form_inscricao").validationEngine('validate')) {
+     montaResumo();
      $('#modal_resumo').modal('show');
 //    $('#form_inscricao').submit();
    }
@@ -63,6 +66,10 @@ $(document).ready(function(){
 
   $('.btn_desmarcar').click(function(){
     desmarcar($(this));
+  });
+  
+  $('#finalizar_btn').click(function(){
+    $('#form_inscricao').submit();
   });
 });
 
@@ -95,6 +102,9 @@ var marcar = function(element) {
   element.parent().children(".btn_desmarcar").show();
   element.parent().css('background-color', '#8CC63F');
   element.parent().children('p,h3').css('color', '#FFF');
+  element.parent().children('.titulo').each(function(){
+    minicurso = $(this).val();
+  });
   total += 20;
   exibirTotal();
 };
@@ -107,6 +117,7 @@ var desmarcar = function(element) {
     element.parent().children('p,h3').css('color', '#555555');
     total -= 20;
     exibirTotal();
+    minicurso = '';
   }
 };
 
@@ -118,4 +129,47 @@ var exibirTotal = function() {
   }
   
   $('#wizard').smartWizard('showMessage','Total: R$ ' + totalFinal);
+};
+
+var montaResumo = function() {
+  console.log('montando resumo dos dados pessoais ...');
+  $('#resumo_nome').text($('#nome_completo').val());
+  $('#resumo_sexo').text($('#sexo').val());
+  $('#resumo_data_nascimento').text($('#data_de_nascimento').val());
+  $('#resumo_cpf').text($('#cpf').val());
+  $('#resumo_rg').text($('#rg').val());
+  $('#resumo_orgao_expedidor').text($('#orgao_emissor').val());
+  $('#resumo_estado_emissor').text($('#estado_emissor').val());
+  $('#resumo_estado_civil').text($('#estado_civil').val());
+  
+  console.log('montado resumo da naturalidade ...');
+  $('#resumo_cidade_naturalidade').text($('#cidade_naturalidade').val());
+  $('#resumo_estado_naturalidade').text($('#estado_naturalidade').val());
+  
+  console.log('montando resumo do endereço ...');
+  $('#resumo_endereco').text($('#endereco').val());
+  $('#resumo_numero').text($('#numero').val());
+  $('#resumo_complemento').text($('#complemento').val());
+  $('#resumo_bairro').text($('#bairro').val());
+  $('#resumo_cep').text($('#cep').val());
+  $('#resumo_estado').text($('#estado').val());
+  $('#resumo_cidade').text($('#cidade').val());
+  
+  console.log('montando resumo do contato ...');
+  $('#resumo_telefone').text($('#telefone').val());
+  $('#resumo_celular').text($('#celular').val());
+  $('#resumo_email').text($('#email').val());
+  
+  console.log('montando resumo dos dados profissionais ...');
+  $('#resumo_tipo_profissional').text(tipoProfissional);
+  
+  if (fezUploadSbg) {
+    $('#resumo_socio').text('Sócio SBG');
+  } else if (fezUploadSbmcta) {
+    $('#resumo_socio').text('Sócio SBMCTA');
+  } else {
+    $('#resumo_socio').text('Não é sócio');
+  }
+  
+  $('#resumo_minicurso').text(minicurso);
 };

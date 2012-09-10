@@ -5,10 +5,13 @@
   </div>
   <div class="modal-body">
     <p>
-      <h4>Clique no botão abaixo para enviar o seu comprovante de matrícula</h4>
+      <h4>Clique no botão abaixo para enviar o seu comprovante</h4>
       <uploader:uploader id="${id}_upload" allowedExtensions="${"['png', 'jpg', 'jpeg']"}">
         <uploader:onProgress>console.log(loaded + ' of ' + total + ' done so far') </uploader:onProgress>
-        <uploader:onComplete>acaoFezUpload("#${id}", ${valor});</uploader:onComplete>
+        <uploader:onComplete>
+          tipoProfissional = "${tipo_profissional}";
+          acaoFezUpload("#${id}", ${valor});
+        </uploader:onComplete>
         <uploader:onCancel>alert('Você cancelou o envio do arquivo'); </uploader:onCancel>
         <uploader:noScript>
           <p>O seu navegador não suporta a execução de scripts</p>

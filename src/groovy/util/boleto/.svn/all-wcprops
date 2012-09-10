@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/vestibular/!svn/ver/42/Vestibular/src/groovy/util/boleto
+END
+Sicoob.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vestibular/!svn/ver/34/Vestibular/src/groovy/util/boleto/Sicoob.groovy
+END
+Bnb.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/vestibular/!svn/ver/42/Vestibular/src/groovy/util/boleto/Bnb.groovy
+END
+Banco.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/vestibular/!svn/ver/34/Vestibular/src/groovy/util/boleto/Banco.groovy
+END
+Boleto.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vestibular/!svn/ver/34/Vestibular/src/groovy/util/boleto/Boleto.groovy
+END
+Common.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/vestibular/!svn/ver/40/Vestibular/src/groovy/util/boleto/Common.groovy
+END

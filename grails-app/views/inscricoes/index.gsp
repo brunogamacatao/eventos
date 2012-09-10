@@ -34,7 +34,7 @@
   </style>
 </head>
 <body style="background-color:transparent">
-  <form id="form_inscricao" action="index_submit" method="get" accept-charset="utf-8" class="form-horizontal">
+  <g:form name="form_inscricao" controller="inscricoes" action="gerarBoleto" class="form-horizontal">
     <g:wizard>
       <g:wizardTitle>
         <g:wizardStep titulo="Dados Pessoais"/>
@@ -55,12 +55,12 @@
         <g:render template="minicursos"/>
       </g:wizardContent>
     </g:wizard>
-  </form>
+  </g:form>
 
-  <g:render template="modalUpload" model="['id': 'modal_aluno_grad',     'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 100]"/>
-  <g:render template="modalUpload" model="['id': 'modal_aluno_pos_grad', 'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 120]"/>
-  <g:render template="modalUpload" model="['id': 'modal_aluno_pos_doc',  'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 140]"/>
-  <g:render template="modalUpload" model="['id': 'modal_medico',         'titulo': 'Envie o seu comprovante de atuação profissional digitalizado', 'valor': 160]"/>
+  <g:render template="modalUpload" model="['tipo_profissional': 'aluno_graduacao','id': 'modal_aluno_grad',     'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 100]"/>
+  <g:render template="modalUpload" model="['tipo_profissional': 'aluno_pos_graduacao','id': 'modal_aluno_pos_grad', 'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 120]"/>
+  <g:render template="modalUpload" model="['tipo_profissional': 'aluno_pos_doc','id': 'modal_aluno_pos_doc',  'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 140]"/>
+  <g:render template="modalUpload" model="['tipo_profissional': 'profissional','id': 'modal_medico',         'titulo': 'Envie o seu comprovante de atuação profissional digitalizado', 'valor': 160]"/>
   
   <g:render template="modalSocio" model="['tipoSocio': 'sbg']"/>
   <g:render template="modalSocio" model="['tipoSocio': 'sbmcta']"/>

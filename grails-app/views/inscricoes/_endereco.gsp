@@ -11,5 +11,5 @@
 <div class="span4">
   <g:field label="Telefone" style="telefone"/>
   <g:field label="Celular" required="false" style="telefone"/>
-  <g:field label="E-mail" email="true"/>
+  <g:field label="E-mail" id="email" email="true"/>
 </div>
