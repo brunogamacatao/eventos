@@ -9,7 +9,7 @@ class Baixa {
     Date dateCreated
     Date lastUpdated
     
-    Titulo titulo
+    static belongsTo = [titulo : Titulo]
     
     static constraints = {
         dataPagamento(blank: false)

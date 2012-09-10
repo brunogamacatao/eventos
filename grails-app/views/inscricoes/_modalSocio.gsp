@@ -9,6 +9,7 @@
       <uploader:uploader id="${tipoSocio}_upload" allowedExtensions="${"['png', 'jpg', 'jpeg']"}">
         <uploader:onProgress>console.log(loaded + ' of ' + total + ' done so far') </uploader:onProgress>
         <uploader:onComplete>
+          $('#arquivo_socio').val(fileName);
           fezUpload${tipoSocio.capitalize()} = true;
           $("#modal_${tipoSocio}").modal('hide');
           $('#div_socio').html(criarAlerta("Sucesso!", "Seu arquivo foi enviado com sucesso !"));

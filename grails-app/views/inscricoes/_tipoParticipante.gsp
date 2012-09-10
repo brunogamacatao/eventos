@@ -39,7 +39,7 @@
     <h4>Se você for sócio de uma das instituições abaixo, clique no botão correspondente</h4>
     <p style="text-align: center">
       <a href="#modal_sbg" role='button' class="btn btn-warning" data-toggle='modal'>SBG</a> &nbsp; 
-      <a href="#" class="btn btn-warning">SBMCTA</a>
+      <a href="#modal_sbmcta" role='button' class="btn btn-warning" data-toggle='modal'>SBMCTA</a>
     </p>
   </div>  
 </div>

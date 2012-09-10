@@ -104,10 +104,13 @@ grails.plugins.springsecurity.interceptUrlMap = [
     '/inscricoes/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
     '/static/**':     ['IS_AUTHENTICATED_ANONYMOUSLY'],
     '/ajaxUpload/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/barCode/**':    ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/images/**':     ['IS_AUTHENTICATED_ANONYMOUSLY'],
+    '/css/**':        ['IS_AUTHENTICATED_ANONYMOUSLY'],
     '/**':            ['IS_AUTHENTICATED_REMEMBERED']
 ]
 
 // Configuracao do uploader
-comprovanteUpload {
-  temporaryFile = 'tmp/uploaded.file'
+imageUpload {
+  temporaryFile = '/tmp/uploaded.file'
 }

@@ -102,8 +102,8 @@ var marcar = function(element) {
   element.parent().children(".btn_desmarcar").show();
   element.parent().css('background-color', '#8CC63F');
   element.parent().children('p,h3').css('color', '#FFF');
-  element.parent().children('.titulo').each(function(){
-    minicurso = $(this).val();
+  element.parent().children('.id_minicurso').each(function(){
+    $('#id_minicurso').val($(this).val());
   });
   total += 20;
   exibirTotal();
@@ -111,13 +111,14 @@ var marcar = function(element) {
 
 var desmarcar = function(element) {
   if (element.is(':visible')) {
+    minicurso = '';
     element.hide();
     element.parent().children(".btn_marcar").show();
     element.parent().css('background-color', '#FFF');
     element.parent().children('p,h3').css('color', '#555555');
     total -= 20;
     exibirTotal();
-    minicurso = '';
+    $('#id_minicurso').val('');
   }
 };
 
@@ -161,15 +162,20 @@ var montaResumo = function() {
   $('#resumo_email').text($('#email').val());
   
   console.log('montando resumo dos dados profissionais ...');
-  $('#resumo_tipo_profissional').text(tipoProfissional);
+  $('#resumo_tipo_profissional').text($('#tipo_participante').val());
+  
+  $('#socio_sbg').val('false');
+  $('#socio_sbmcta').val('false');
   
   if (fezUploadSbg) {
     $('#resumo_socio').text('Sócio SBG');
+    $('#socio_sbg').val('true');
   } else if (fezUploadSbmcta) {
     $('#resumo_socio').text('Sócio SBMCTA');
+    $('#socio_sbmcta').val('true');
   } else {
     $('#resumo_socio').text('Não é sócio');
   }
   
-  $('#resumo_minicurso').text(minicurso);
+  $('#resumo_minicurso').text($('#id_minicurso').val());
 };

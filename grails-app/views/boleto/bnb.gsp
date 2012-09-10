@@ -2,7 +2,7 @@
 <html>
   <head>
   <title>Vesitular FACISA-FCM-ESAC</title>
-  <meta http-equiv=Content-Type content="text/html charset=utf-8"/>
+  <meta http-equiv="Content-Type" content="text/html charset=utf-8"/>
   <link rel="stylesheet" type="text/css" href="${resource(dir:'css/boleto',file:'sicoob.css')}"/>
   <script type="text/javascript">
     window.print();
@@ -34,35 +34,6 @@
 <body>
   <div id="container">
     <div id="boleto">
-      <g:imagem id="${vestibular.logomarca.id}" largura="670" altura="100"/>
-
-      <fieldset>
-        <legend>Dados da Inscrição</legend>
-        <br/>
-        <div style="width: 230px; float: left; margin: 0 20px 10px 0;">
-          <label for="nome">
-            <span class="legenda">1° Opção de Curso</span><br/>
-            <span class="resposta">${candidato.opcao1}</span>
-          </label>
-        </div>
-        <div style="width: 230px;  margin-right: 20px; float: left;">
-          <label for="nome">
-            <span class="legenda">2° Opção de Curso</span><br/>
-            <span class="resposta">${candidato.opcao2}</span>
-          </label>
-        </div>
-        <div style="width: 150px;  margin-right: 0; float: left;">
-          <label for="nome">
-            <span class="legenda">Lingua Estrangeira</span><br/>
-            <span class="resposta">${candidato.linguaEstrangeira}</span>
-          </label>
-        </div>
-      </fieldset>
-
-      <div class="cut">
-        <p>Corte na linha pontilhada</p>
-      </div>
-
       <table class="header" border="0" cellspacing="0" cellpadding="0">
         <tbody>
           <tr>

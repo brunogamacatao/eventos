@@ -35,6 +35,14 @@
 </head>
 <body style="background-color:transparent">
   <g:form name="form_inscricao" controller="inscricoes" action="gerarBoleto" class="form-horizontal">
+    <g:hiddenField name="id_minicurso"/>
+    <g:hiddenField name="tipo_participante"/>
+    <g:hiddenField name="socio_sbg"/>
+    <g:hiddenField name="socio_sbmcta"/>
+    <g:hiddenField name="arquivo_comprovante"/>
+    <g:hiddenField name="arquivo_socio"/>
+    <g:hiddenField name="arquivo_artigo"/>
+    
     <g:wizard>
       <g:wizardTitle>
         <g:wizardStep titulo="Dados Pessoais"/>

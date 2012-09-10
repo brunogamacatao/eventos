@@ -9,7 +9,8 @@
       <uploader:uploader id="${id}_upload" allowedExtensions="${"['png', 'jpg', 'jpeg']"}">
         <uploader:onProgress>console.log(loaded + ' of ' + total + ' done so far') </uploader:onProgress>
         <uploader:onComplete>
-          tipoProfissional = "${tipo_profissional}";
+          $('#tipo_participante').val("${tipo_profissional}");
+          $('#arquivo_comprovante').val(fileName);
           acaoFezUpload("#${id}", ${valor});
         </uploader:onComplete>
         <uploader:onCancel>alert('Você cancelou o envio do arquivo'); </uploader:onCancel>

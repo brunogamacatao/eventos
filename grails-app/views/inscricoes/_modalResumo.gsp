@@ -31,17 +31,25 @@
   <div class="modal-body">
     <p>
       <h5>Caso você queira submeter um artigo para publicação, clique no botão abaixo para enviá-lo</h5>
-      <uploader:uploader id="artigo_upload" allowedExtensions="${"['png', 'jpg', 'jpeg']"}">
+      <uploader:uploader id="artigo_upload" allowedExtensions="${"['pdf', 'doc']"}">
+        <uploader:onSubmit>
+          $("#finalizar_btn").attr("disabled", "disabled");
+        </uploader:onSubmit>
         <uploader:onProgress>console.log(loaded + ' of ' + total + ' done so far') </uploader:onProgress>
         <uploader:onComplete>
-          alert('O arquivo foi enviado com sucesso !');
+          alert('Seu artigo foi enviado com sucesso e ele será avaliado.');
+          $("#finalizar_btn").removeAttr("disabled");
+          $('#arquivo_artigo').val(fileName);
         </uploader:onComplete>
-        <uploader:onCancel>alert('Você cancelou o envio do arquivo'); </uploader:onCancel>
+        <uploader:onCancel>
+          $("#finalizar_btn").removeAttr("disabled");
+          alert('Você cancelou o envio do arquivo');
+        </uploader:onCancel>
         <uploader:noScript>
           <p>O seu navegador não suporta a execução de scripts</p>
         </uploader:noScript>
       </uploader:uploader>
     </p>
-    <p style="text-align:center"><input id="finalizar_btn" type="button" class="btn btn-success" value="Finalizar Inscrição"/></p>
+    <p style="text-align:center"><button id="finalizar_btn" type="button" class="btn btn-success">Finalizar Inscrição</button></p>
   </div>
 </div>
