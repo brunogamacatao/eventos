@@ -6,7 +6,10 @@
   <div class="modal-body">
     <p>
       <h4>Clique no botão abaixo para enviar o seu comprovante</h4>
-      <uploader:uploader id="${id}_upload" allowedExtensions="${"['png', 'jpg', 'jpeg']"}">
+      <uploader:uploader id="${id}_upload" 
+                         allowedExtensions="${"['png', 'jpg', 'jpeg']"}" 
+                         url="${[controller:'myUpload', action:'upload']}"
+                         params="${[tipo_arquivo: 'comprovante']}">
         <uploader:onProgress>console.log(loaded + ' of ' + total + ' done so far') </uploader:onProgress>
         <uploader:onComplete>
           $('#tipo_participante').val("${tipo_profissional}");

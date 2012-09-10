@@ -1,4 +1,4 @@
-var fezUpload        = true;
+var fezUpload        = false;
 var fezUploadSbg     = false;
 var fezUploadSbmcta  = false;
 var total            = 0.0;
@@ -26,16 +26,15 @@ $(document).ready(function(){
       
       return fezUpload;
     } else {
-      // var valid = $("#form_inscricao").validationEngine('validate');
-      // 
-      // if (!valid) {
-      //   $('#wizard').smartWizard('showMessage', 'Por favor, corrija os erros e clique no botão Próximo');
-      // }
-      // 
-      // $('#wizard').smartWizard('setError', {stepnum: step_num, iserror: !valid});
-      // 
-      // return valid;
-      return true;
+      var valid = $("#form_inscricao").validationEngine('validate');
+      
+      if (!valid) {
+        $('#wizard').smartWizard('showMessage', 'Por favor, corrija os erros e clique no botão Próximo');
+      }
+      
+      $('#wizard').smartWizard('setError', {stepnum: step_num, iserror: !valid});
+      
+      return valid;
     }
   }
   

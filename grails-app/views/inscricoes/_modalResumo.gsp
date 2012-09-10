@@ -31,7 +31,10 @@
   <div class="modal-body">
     <p>
       <h5>Caso você queira submeter um artigo para publicação, clique no botão abaixo para enviá-lo</h5>
-      <uploader:uploader id="artigo_upload" allowedExtensions="${"['pdf', 'doc']"}">
+      <uploader:uploader id="artigo_upload" 
+                         allowedExtensions="${"['pdf', 'doc']"}"
+                         url="${[controller:'myUpload', action:'upload']}"
+                         params="${[tipo_arquivo: 'artigo']}">
         <uploader:onSubmit>
           $("#finalizar_btn").attr("disabled", "disabled");
         </uploader:onSubmit>
