@@ -42,7 +42,6 @@ $(document).ready(function(){
    if ($("#form_inscricao").validationEngine('validate')) {
      montaResumo();
      $('#modal_resumo').modal('show');
-//    $('#form_inscricao').submit();
    }
   }
   
@@ -53,6 +52,7 @@ $(document).ready(function(){
   $('.telefone').mask('(99)9999-9999');
   
   $('#botao_profissional').click(function() {
+    $('#tipo_participante').val("profissional");
     acaoFezUpload(null, 160);
   });
   

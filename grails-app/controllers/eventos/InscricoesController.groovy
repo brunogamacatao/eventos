@@ -51,7 +51,10 @@ class InscricoesController {
       carregarArquivos(participante, params)
       
       if (params.id_minicurso && params.id_minicurso != '') {
-        participante.miniCurso = MiniCurso.findByIdentificador(params.id_minicurso)
+        def miniCurso = MiniCurso.findByIdentificador(params.id_minicurso)
+        participante.miniCurso = miniCurso
+        miniCurso.vagas--
+        miniCurso.save(flush: true, failOnError: true)
       }
       
       participante.save(flush: true, failOnError: true)
