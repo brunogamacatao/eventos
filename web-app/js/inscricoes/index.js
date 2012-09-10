@@ -39,7 +39,8 @@ $(document).ready(function(){
   
   function onFinishCallback(){
    if($("#form_inscricao").validationEngine('validate')){
-    $('#form_inscricao').submit();
+     $('#modal_resumo').modal('show');
+//    $('#form_inscricao').submit();
    }
   }
   

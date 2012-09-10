@@ -65,6 +65,8 @@
   <g:render template="modalSocio" model="['tipoSocio': 'sbg']"/>
   <g:render template="modalSocio" model="['tipoSocio': 'sbmcta']"/>
   
+  <g:render template="modalResumo"/>
+  
   <r:layoutResources/>
 </body>
 </html>
