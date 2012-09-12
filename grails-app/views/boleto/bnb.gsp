@@ -62,7 +62,7 @@
 
           <tr class="campos">
             <td class="cedente">${ boleto.cedente.cedente } &nbsp;</td>
-            <td class="ag_cod_cedente">${ String.format("%04d", boleto.cedente.agencia) } | ${ boleto.cedente.conta }-1 &nbsp;</td>
+            <td class="ag_cod_cedente">${ String.format("%04d", boleto.cedente.agencia) } | ${ boleto.cedente.conta }-9 &nbsp;</td>
             <td class="especie">${ boleto.documento.especie } &nbsp;</td>
             <td class="qtd">1 &nbsp;</td>
             <td class="nosso_numero">${ boleto.cedente.nossoNumero } &nbsp;</td>
@@ -167,7 +167,7 @@
           </tr>
           <tr class="campos">
             <td class="cedente2">${ boleto.cedente.cedente }</td>
-            <td class="ag_cod_cedente2">${ String.format("%04d", boleto.cedente.agencia) } | ${ boleto.cedente.conta }-1</td>
+            <td class="ag_cod_cedente2">${ String.format("%04d", boleto.cedente.agencia) } | ${ boleto.cedente.conta }-9</td>
           </tr>
         </tbody>
       </table>

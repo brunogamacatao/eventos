@@ -109,11 +109,11 @@ class InscricoesController {
         cedente {
           cedente  "Centro de Ensino Superior e Desenvolvimento"
           cnpj     "02.108.023.0001/40"
-          agencia  123
-          conta    321
-          convenio 13
+          agencia  9
+          conta    47152
+          convenio 10
           carteira 57
-          operacao 12
+          operacao 2
         }
         sacado {
           nome     participante.nome
