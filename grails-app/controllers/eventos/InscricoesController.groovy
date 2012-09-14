@@ -87,6 +87,10 @@ class InscricoesController {
       
       def valorTotal = valorPorParticipante[participante.tipoParticipante]
 
+      if (participante.miniCurso) {
+        valorTotal += participante.miniCurso.valor
+      }
+
       if (participante.socioSbmcta || participante.socioSbg) {
         valorTotal *= 0.8
       }
