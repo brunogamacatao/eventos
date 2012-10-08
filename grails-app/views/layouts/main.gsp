@@ -48,7 +48,7 @@
               <a href="#">Miscelândia</a>
             </li>
             <li class="item06"><img src="${resource(dir: 'images', file: 'proprio/relatorios.png')}" alt="">
-              <a href="#">Relatórios</a>
+              <g:link controller="relatorio" action="resumo">Relatórios</g:link>
             </li>
             <li class="item07"><img src="${resource(dir: 'images', file: 'proprio/financeiro.png')}" alt="">
             <g:link controller="baixa" action="list">Financeiro</g:link>

@@ -116,7 +116,7 @@ class InscricoesController {
           agencia  9
           conta    47152
           convenio 10
-          carteira 57
+          carteira 51
           operacao 2
         }
         sacado {

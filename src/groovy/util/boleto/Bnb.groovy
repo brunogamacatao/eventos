@@ -60,7 +60,7 @@ class Bnb implements Banco {
             getValorFormatado() + 
             String.format("%04d", boleto.cedente.agencia) +
             String.format("%07d", boleto.cedente.conta) +
-            "1" +
+            "9" +
             getNossoNumero() + getNossoNumeroDV() +
             String.format("%02d", boleto.cedente.carteira) +
             "000"

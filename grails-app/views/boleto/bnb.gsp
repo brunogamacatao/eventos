@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
   <head>
-  <title>Vesitular FACISA-FCM-ESAC</title>
+  <title>Simpósio de Medicina Molecular da Paraíba</title>
   <meta http-equiv="Content-Type" content="text/html charset=utf-8"/>
   <link rel="stylesheet" type="text/css" href="${resource(dir:'css/boleto',file:'sicoob.css')}"/>
   <script type="text/javascript">
@@ -62,7 +62,7 @@
 
           <tr class="campos">
             <td class="cedente">${ boleto.cedente.cedente } &nbsp;</td>
-            <td class="ag_cod_cedente">${ String.format("%04d", boleto.cedente.agencia) } | ${ boleto.cedente.conta }-9 &nbsp;</td>
+            <td class="ag_cod_cedente">${ String.format("%04d", boleto.cedente.agencia) } | ${ String.format("%07d", boleto.cedente.conta) }-9 &nbsp;</td>
             <td class="especie">${ boleto.documento.especie } &nbsp;</td>
             <td class="qtd">1 &nbsp;</td>
             <td class="nosso_numero">${ boleto.cedente.nossoNumero } &nbsp;</td>
@@ -167,7 +167,7 @@
           </tr>
           <tr class="campos">
             <td class="cedente2">${ boleto.cedente.cedente }</td>
-            <td class="ag_cod_cedente2">${ String.format("%04d", boleto.cedente.agencia) } | ${ boleto.cedente.conta }-9</td>
+            <td class="ag_cod_cedente2">${ String.format("%04d", boleto.cedente.agencia) } | ${ String.format("%07d", boleto.cedente.conta) }-9</td>
           </tr>
         </tbody>
       </table>
