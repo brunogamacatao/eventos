@@ -2,6 +2,8 @@ import eventos.Grupo
 import eventos.Usuario
 import eventos.UsuarioGrupo
 import eventos.MiniCurso
+import eventos.EstadoInscricao
+import eventos.Participante
 
 class BootStrap {
   def springSecurityService
@@ -29,6 +31,17 @@ class BootStrap {
     
     miniCurso3.titulo = 'Medicina Nuclear - princípios e aplicações'
     miniCurso3.save(flush: true, failOnError: true)
+    
+    /*
+     * Todos os participantes devem ter um estado associado, definido em sua
+     * criação, o código abaixo adapta os registros legados para que estes 
+     * também tenham um estado.
+     */
+     Participante.list().each { participante -> 
+       if (!participante.estadoAtual) {
+         participante.addToEstados(new EstadoInscricao(estado: 'PENDENTE')).save(flush: true, failOnError: true)
+       }
+     }
   }
   
   def destroy = {

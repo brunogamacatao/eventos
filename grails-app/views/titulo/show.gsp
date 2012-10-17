@@ -59,11 +59,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${tituloInstance?.baixa}">
+				<g:if test="${tituloInstance?.participante}">
 				<li class="fieldcontain">
-					<span id="baixa-label" class="property-label"><g:message code="titulo.baixa.label" default="Baixa" /></span>
+					<span id="participante-label" class="property-label"><g:message code="titulo.participante.label" default="Participante" /></span>
 					
-						<span class="property-value" aria-labelledby="baixa-label"><g:link controller="baixa" action="show" id="${tituloInstance?.baixa?.id}">${tituloInstance?.baixa?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="participante-label"><g:link controller="participante" action="show" id="${tituloInstance?.participante?.id}">${tituloInstance?.participante?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -82,6 +82,17 @@
 					<span id="lastUpdated-label" class="property-label"><g:message code="titulo.lastUpdated.label" default="Last Updated" /></span>
 					
 						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${tituloInstance?.lastUpdated}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${tituloInstance?.pagamentos}">
+				<li class="fieldcontain">
+					<span id="pagamentos-label" class="property-label"><g:message code="titulo.pagamentos.label" default="Pagamentos" /></span>
+					
+						<g:each in="${tituloInstance.pagamentos}" var="p">
+						<span class="property-value" aria-labelledby="pagamentos-label"><g:link controller="pagamento" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>

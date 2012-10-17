@@ -32,9 +32,9 @@
 					
 						<g:sortableColumn property="linhaDigitavel" title="${message(code: 'titulo.linhaDigitavel.label', default: 'Linha Digitavel')}" />
 					
-						<th><g:message code="titulo.baixa.label" default="Baixa" /></th>
+						<th><g:message code="titulo.participante.label" default="Participante" /></th>
 					
-						<g:sortableColumn property="dateCreated" title="${message(code: 'titulo.dateCreated.label', default: 'Date Created')}" />
+						<th>Pago</th>
 					
 					</tr>
 				</thead>
@@ -50,9 +50,9 @@
 					
 						<td>${fieldValue(bean: tituloInstance, field: "linhaDigitavel")}</td>
 					
-						<td>${fieldValue(bean: tituloInstance, field: "baixa")}</td>
+						<td>${fieldValue(bean: tituloInstance, field: "participante")}</td>
 					
-						<td><g:formatDate date="${tituloInstance.dateCreated}" /></td>
+						<td>${tituloInstance?.pago}</td>
 					
 					</tr>
 				</g:each>

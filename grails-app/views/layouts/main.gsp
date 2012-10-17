@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
-  <g:layoutHead/>
-  <r:layoutResources />
+    
+    <r:require module="application"/>
+    <g:layoutHead/>
+    <r:layoutResources />
 </head>
 <body>
   <div id="wrapper">
@@ -77,7 +79,7 @@
     </div>
   </div>
   <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-<g:javascript library="application"/>
-<r:layoutResources />
+  <g:javascript library="application"/>
+  <r:layoutResources />
 </body>
 </html>

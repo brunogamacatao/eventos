@@ -10,7 +10,9 @@ class Participante extends Pessoa {
     
     boolean socioSbg
     boolean socioSbmcta
-    MiniCurso miniCurso;
+    MiniCurso miniCurso
+    
+    static hasMany = [estados : EstadoInscricao]
     
     static constraints = {
         socio(blank: false, inList: ["NÃO", "SIM"])
@@ -18,5 +20,13 @@ class Participante extends Pessoa {
         comprovanteSocio(nullable: true)
         artigo(nullable: true)
         miniCurso(nullable: true)
+    }
+    
+    def getEstadoAtual() {
+      def estados = EstadoInscricao.findAllByParticipante(this, [sort: 'dateCreated', order: 'desc'])
+      if (estados && estados.size() > 0) {
+        return estados[0]
+      }
+      return null
     }
 }

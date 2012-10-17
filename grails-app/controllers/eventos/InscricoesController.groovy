@@ -48,6 +48,8 @@ class InscricoesController {
       participante.socioSbmcta        = "true" == params.socio_sbmcta
       participante.socio              = (participante.socioSbg || participante.socioSbmcta) ? "SIM" : "NÃO"
       
+      participante.addToEstados(new EstadoInscricao(estado: 'PENDENTE'))
+      
       carregarArquivos(participante, params)
       
       if (params.id_minicurso && params.id_minicurso != '') {

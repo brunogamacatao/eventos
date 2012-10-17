@@ -1,5 +1,6 @@
 package eventos
 
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 class TituloController {
@@ -98,5 +99,16 @@ class TituloController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'titulo.label', default: 'Titulo'), id])
             redirect(action: "show", id: id)
         }
+    }
+    
+    def recupera(String id) {
+      def titulo   = Titulo.findByNossoNumero(id)
+      def resposta = [resultado: 'nao encontrado']
+      
+      if (titulo) {
+        resposta = [resultado: 'ok', titulo: titulo.id]
+      }
+      
+      render resposta as JSON
     }
 }

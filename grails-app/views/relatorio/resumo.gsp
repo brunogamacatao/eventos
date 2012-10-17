@@ -26,7 +26,7 @@
             <td>${participante.socio}</td>
             <td>${participante.miniCurso ? participante.miniCurso.titulo : '-'}</td>
             <td>${participante.artigo ? 'sim' : 'não'}</td>
-            <td>PENDENTE</td>
+            <td>${participante.estadoAtual}</td>
           </tr>
         </g:each>
       </tbody>

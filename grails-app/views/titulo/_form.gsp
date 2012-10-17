@@ -7,7 +7,7 @@
 		<g:message code="titulo.valor.label" default="Valor" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="valor" value="${fieldValue(bean: tituloInstance, field: 'valor')}" required=""/>
+	<g:field type="number" name="valor" required="" value="${fieldValue(bean: tituloInstance, field: 'valor')}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: tituloInstance, field: 'dataVencimento', 'error')} required">
@@ -34,11 +34,28 @@
 	<g:textField name="linhaDigitavel" required="" value="${tituloInstance?.linhaDigitavel}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: tituloInstance, field: 'baixa', 'error')} required">
-	<label for="baixa">
-		<g:message code="titulo.baixa.label" default="Baixa" />
+<div class="fieldcontain ${hasErrors(bean: tituloInstance, field: 'participante', 'error')} required">
+	<label for="participante">
+		<g:message code="titulo.participante.label" default="Participante" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="baixa" name="baixa.id" from="${eventos.Baixa.list()}" optionKey="id" required="" value="${tituloInstance?.baixa?.id}" class="many-to-one"/>
+	<g:select id="participante" name="participante.id" from="${eventos.Participante.list()}" optionKey="id" required="" value="${tituloInstance?.participante?.id}" class="many-to-one"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: tituloInstance, field: 'pagamentos', 'error')} ">
+	<label for="pagamentos">
+		<g:message code="titulo.pagamentos.label" default="Pagamentos" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${tituloInstance?.pagamentos?}" var="p">
+    <li><g:link controller="pagamento" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="pagamento" action="create" params="['titulo.id': tituloInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'pagamento.label', default: 'Pagamento')])}</g:link>
+</li>
+</ul>
+
 </div>
 
