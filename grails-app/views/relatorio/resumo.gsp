@@ -12,8 +12,9 @@
         <tr>
           <th>-</th>
           <th>Participante</th>
-          <th>Sócio</th>
-          <th>Minicursos</th>
+          <th>E-Mail</th>
+          <th>Telefone</th>
+          <th>Minicurso</th>
           <th>Artigo</th>
           <th>Situação</th>
         </tr>
@@ -23,7 +24,8 @@
           <tr>
             <td>${i + 1}</td>
             <td>${participante.nome}</td>
-            <td>${participante.socio}</td>
+            <td>${participante.email}</td>
+            <td>${participante.telefone1} | ${participante.telefone2}</td>
             <td>${participante.miniCurso ? participante.miniCurso.titulo : '-'}</td>
             <td>${participante.artigo ? 'sim' : 'não'}</td>
             <td>${participante.estadoAtual}</td>

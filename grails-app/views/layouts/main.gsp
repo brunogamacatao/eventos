@@ -53,7 +53,7 @@
               <g:link controller="relatorio" action="resumo">Relatórios</g:link>
             </li>
             <li class="item07"><img src="${resource(dir: 'images', file: 'proprio/financeiro.png')}" alt="">
-            <g:link controller="baixa" action="list">Financeiro</g:link>
+            <g:link controller="pagamento" action="list">Financeiro</g:link>
             </li>
             <li class="item05"><img src="${resource(dir: 'images', file: 'proprio/usuario.png')}" alt="">
             <g:link controller="usuario" action="list">Usuários</g:link>

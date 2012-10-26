@@ -1,5 +1,7 @@
 package eventos
 
+import java.text.SimpleDateFormat
+import java.text.NumberFormat
 import org.springframework.dao.DataIntegrityViolationException
 
 class PagamentoController {
@@ -114,5 +116,45 @@ class PagamentoController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'pagamento.label', default: 'Pagamento'), params.id])
             redirect(action: "show", id: params.id)
         }
+    }
+    
+    def enviarArquivo() { }
+    
+    def upload() {
+      def dateFmt = new SimpleDateFormat("dd/MM/yyyy")
+      def numFmt  = NumberFormat.getInstance(new Locale("pt", "BR"))
+      def usuario = Usuario.get(springSecurityService.principal.id)
+      def arquivo = File.createTempFile("tmp",".dat")
+      arquivo.deleteOnExit()
+      request.getFile('arquivo').transferTo(arquivo)
+      
+      def texto = ""
+      arquivo.eachLine { linha ->
+        def dados = linha.split()
+        def nossoNumero = dados[0]
+        def valor       = numFmt.parse(dados[1])
+        def dataPagto   = dateFmt.parse(dados[2])
+        def titulo      = Titulo.findByNossoNumero(nossoNumero)
+        def situacao    = ""
+        
+        if (titulo) {
+          def pagamento = new Pagamento(nossoNumero: nossoNumero, 
+                                        dataPagamento: dataPagto, 
+                                        valor: valor, 
+                                        usuario: usuario,
+                                        titulo: titulo).save(flush: true, failOnError: true)
+
+          if (titulo.pago) {
+            titulo.participante.addToEstados(new EstadoInscricao(estado: 'CONFIRMADO')).save(flush: true, failOnError: true)
+          }
+          situacao = "OK"
+        } else {
+          situacao = "NAO ENCONTRADO"
+        }
+        
+        texto += "${nossoNumero} - (${situacao})<br/>"
+      }
+      
+      render texto
     }
 }
