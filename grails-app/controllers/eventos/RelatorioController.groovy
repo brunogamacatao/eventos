@@ -6,7 +6,6 @@ class RelatorioController {
     
   def resumo() {
     def participantes = Participante.list(sort: "nome")
-    participantes = participantes.findAll { it.estadoAtual == 'CONFIRMADO' }
-    [participantes: participantes]
+    [participantes: participantes.findAll { it.estadoAtual.estado == 'CONFIRMADO'}]
   }
 }

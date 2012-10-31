@@ -7,21 +7,21 @@
           <td><h5>Estudante de Graduação</h5></td>
           <td><h5><span class="label label-success">R$ 100,00</span></h5></td>
           <td>
-            <h5><a href='#modal_aluno_grad' role='button' class='btn btn-primary botao_modal' data-toggle='modal'>Escolher</a></h5>
+            <h5><a id='botao_aluno_grad' role='button' class='btn btn-primary botao_modal'>Escolher</a></h5>
           </td>
         </tr>
         <tr>
           <td><h5>Estudante de Pós-Graduação</h5></td>
           <td><h5><span class="label label-success">R$ 120,00</span></h5></td>
           <td>
-            <h5><a href='#modal_aluno_pos_grad' role='button' class='btn btn-primary botao_modal' data-toggle='modal'>Escolher</a></h5>
+            <h5><a id='botao_aluno_pos_grad' role='button' class='btn btn-primary botao_modal'>Escolher</a></h5>
           </td>
         </tr>
         <tr>
           <td><h5>Estudante de Pós-Doutorado</h5></td>
           <td><h5><span class="label label-success">R$ 140,00</span></h5></td>
           <td>
-            <h5><a href='#modal_aluno_pos_doc' role='button' class='btn btn-primary botao_modal' data-toggle='modal'>Escolher</a></h5>
+            <h5><a id='botao_aluno_pos_doc' role='button' class='btn btn-primary botao_modal'>Escolher</a></h5>
           </td>
         </tr>
         <tr>

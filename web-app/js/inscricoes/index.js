@@ -51,9 +51,34 @@ $(document).ready(function(){
   $('#cep').mask('99999-999');
   $('.telefone').mask('(99)9999-9999');
   
+  $('#botao_aluno_grad').click(function() {
+    $('#tipo_participante').val("aluno_graduacao");
+    fezUpload = true;
+    total    += 100;
+    $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
+    exibirTotal();
+  });
+  $('#botao_aluno_pos_grad').click(function() {
+    $('#tipo_participante').val("aluno_pos_graduacao");
+    fezUpload = true;
+    total    += 120;
+    $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
+    exibirTotal();
+  });
+  $('#botao_aluno_pos_doc').click(function() {
+    $('#tipo_participante').val("aluno_pos_doc");
+    fezUpload = true;
+    total    += 140;
+    $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
+    exibirTotal();
+  });
   $('#botao_profissional').click(function() {
     $('#tipo_participante').val("profissional");
-    acaoFezUpload(null, 160);
+    fezUpload = true;
+    total    += 160;
+    $("#div_socio").show();
+    $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
+    exibirTotal();
   });
   
   $('.btn_marcar').click(function(){
