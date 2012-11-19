@@ -6,28 +6,12 @@
     <meta name="layout" content="main">
   </head>
   <body>
-    <h1>Relatório</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Participante</th>
-          <th>Sócio</th>
-          <th>Minicursos</th>
-          <th>Artigo</th>
-          <th>Situação</th>
-        </tr>
-      </thead>
-      <tbody>
-        <g:each var="participante" in="${participantes}">
-          <tr>
-            <td>${participante.nome}</td>
-            <td>${participante.socio}</td>
-            <td>${participante.miniCurso ? participante.miniCurso.titulo : '-'}</td>
-            <td>${participante.artigo ? 'sim' : 'não'}</td>
-            <td>PENDENTE</td>
-          </tr>
-        </g:each>
-      </tbody>
-    </table>
+    <h1>Relatórios</h1>
+    <hr/>
+    <br/>
+    <ol>
+      <li><g:link action="resumo">Resumo das Incrições</g:link></li>
+      <li><g:link action="minicursos">Relatório por Mini-Curso</g:link></li>
+    </ol>
   </body>
 </html>

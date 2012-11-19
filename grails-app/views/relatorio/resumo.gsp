@@ -27,7 +27,12 @@
             <td>${participante.email}</td>
             <td>${participante.telefone1} | ${participante.telefone2}</td>
             <td>${participante.miniCurso ? participante.miniCurso.titulo : '-'}</td>
-            <td>${participante.artigo ? 'sim' : 'não'}</td>
+            <g:if test="${participante.artigo}">
+              <td><g:link action="downloadResumo" id="${participante.id}">sim</g:link></td>
+            </g:if>
+            <g:else>
+              <td>não</td>
+            </g:else>
             <td>${participante.estadoAtual}</td>
           </tr>
         </g:each>

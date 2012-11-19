@@ -50,7 +50,7 @@
               <a href="#">Miscelândia</a>
             </li>
             <li class="item06"><img src="${resource(dir: 'images', file: 'proprio/relatorios.png')}" alt="">
-              <g:link controller="relatorio" action="resumo">Relatórios</g:link>
+              <g:link controller="relatorio">Relatórios</g:link>
             </li>
             <li class="item07"><img src="${resource(dir: 'images', file: 'proprio/financeiro.png')}" alt="">
             <g:link controller="pagamento" action="list">Financeiro</g:link>
