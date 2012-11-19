@@ -11,8 +11,12 @@ class RelatorioController {
   
   def downloadResumo() {
     def participante = Participante.get(params.id)
-    response.setContentType("application/pdf")
-    response.setHeader("Content-disposition", "filename=${participante.artigo.nomeArquivo}")
+    response.setContentType("application/octet-stream")
+    
+    def nomeArquivo = participante.artigo.nomeArquivo
+    if (nomeArquivo.indexOf('.') < 0) nomeArquivo = nomeArquivo + ".doc"
+    
+    response.setHeader("Content-disposition", "filename=${nomeArquivo}")
     response.outputStream << participante.artigo.imagem
     response.outputStream.flush()
   }
