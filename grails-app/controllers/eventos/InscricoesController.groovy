@@ -12,7 +12,14 @@ class InscricoesController {
     def eventoNaoEncontrado() { }
     
     def gerarBoleto = {
-      def participante    = criarParticipante(params)
+      def participante = null
+      
+      if (params.id && Participante.get(params.id)) {
+          participante = Participante.get(params.id)
+      } else {
+        participante = criarParticipante(params)
+      }
+      
       def (boleto, banco) = criarBoleto(participante)
 
       render(view: banco.getTemplateName(), model: [boleto: boleto, banco: banco, participante: participante])
@@ -101,7 +108,7 @@ class InscricoesController {
     }
     
     private def criarBoleto(participante) {
-      def dataVencimento = new Date() + 3
+      def dataVencimento = new Date()
       def valorTotal = calculaValorTotal(participante)
       def titulo = new Titulo(valor: valorTotal, vencimento: dataVencimento, participante: participante).save(flush: true, failOnError: true)
       def numeroDocumento = titulo.id
