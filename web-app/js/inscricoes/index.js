@@ -52,30 +52,30 @@ $(document).ready(function(){
   $('.telefone').mask('(99)9999-9999');
   
   $('#botao_aluno_grad').click(function() {
-    $('#tipo_participante').val("aluno_graduacao");
+    $('#tipo_participante').val("Inscrição Comum");
     fezUpload = true;
-    total    += 100;
+    total    += 15;
     $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
     exibirTotal();
   });
   $('#botao_aluno_pos_grad').click(function() {
-    $('#tipo_participante').val("aluno_pos_graduacao");
+    $('#tipo_participante').val("Apresentação de Trabalho Interno");
     fezUpload = true;
-    total    += 120;
+    total    += 15;
     $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
     exibirTotal();
   });
   $('#botao_aluno_pos_doc').click(function() {
-    $('#tipo_participante').val("aluno_pos_doc");
+    $('#tipo_participante').val("Apresentação de Trabalho Externo");
     fezUpload = true;
-    total    += 140;
+    total    += 10;
     $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
     exibirTotal();
   });
   $('#botao_profissional').click(function() {
-    $('#tipo_participante').val("profissional");
+    $('#tipo_participante').val("Seção EXPO");
     fezUpload = true;
-    total    += 160;
+    total    += 30;
     $("#div_socio").show();
     $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
     exibirTotal();
@@ -83,7 +83,7 @@ $(document).ready(function(){
   
   $('.btn_marcar').click(function(){
     // Desmarcar tudo
-    $(document).find(".btn_desmarcar").each(function() {desmarcar($(this));});
+    // $(document).find(".btn_desmarcar").each(function() {desmarcar($(this));});
     // Marcar apenas esse elemento
     marcar($(this));
   });
@@ -95,7 +95,22 @@ $(document).ready(function(){
   $('#finalizar_btn').click(function(){
     $('#form_inscricao').submit();
   });
+  
+  $('#curso_minicurso').change(function(){
+    escondeCursos();
+    var cursoSelecionado = $("#curso_minicurso option:selected").val();
+    $('#caixas_' + cursoSelecionado).show();
+  });
+  
+  escondeCursos();
 });
+
+var escondeCursos = function() {
+  var cursos = ["arquitetura","administracao","direito","enfermagem","esac","fisioterapia","medicina","sistemas","jogos","construcao"];
+  for (var i = 0; i < cursos.length; i++) {
+    $('#caixas_' + cursos[i]).hide();
+  }
+}
 
 var acaoFezUpload = function(idModal, valor) {
   fezUpload = true;
@@ -126,10 +141,24 @@ var marcar = function(element) {
   element.parent().children(".btn_desmarcar").show();
   element.parent().css('background-color', '#8CC63F');
   element.parent().children('p,h3').css('color', '#FFF');
+  
+  var minicursosSelecionados = $('#id_minicurso').val().split(",");
+  console.log("pre: " + $('#id_minicurso').val());
+  
   element.parent().children('.id_minicurso').each(function(){
-    $('#id_minicurso').val($(this).val());
+    minicursosSelecionados[minicursosSelecionados.length] = $(this).val();
+    
+    for (var i = minicursosSelecionados.length - 1; i >= 0; i--) {
+      if (minicursosSelecionados[i] == '' || minicursosSelecionados[i] == ' ') {
+        minicursosSelecionados.splice(i, 1);
+      }
+    }
   });
-  total += 20;
+  
+  $('#id_minicurso').val(minicursosSelecionados.join(","));
+  console.log("pos: " + $('#id_minicurso').val());
+  
+  total += 10;
   exibirTotal();
 };
 
@@ -140,7 +169,22 @@ var desmarcar = function(element) {
     element.parent().children(".btn_marcar").show();
     element.parent().css('background-color', '#FFF');
     element.parent().children('p,h3').css('color', '#555555');
-    total -= 20;
+    
+    var minicursosSelecionados = $('#id_minicurso').val().split(",");
+    console.log("pre: " + $('#id_minicurso').val());
+    
+    element.parent().children('.id_minicurso').each(function(){
+      for (var i = minicursosSelecionados.length - 1; i >= 0; i--) {
+        if (minicursosSelecionados[i] == $(this).val()) {
+          minicursosSelecionados.splice(i, 1);
+        }
+      }
+    });
+    
+    $('#id_minicurso').val(minicursosSelecionados.join(","));
+    console.log("pos: " + $('#id_minicurso').val());
+    
+    total -= 10;
     exibirTotal();
     $('#id_minicurso').val('');
   }
@@ -187,19 +231,4 @@ var montaResumo = function() {
   
   console.log('montando resumo dos dados profissionais ...');
   $('#resumo_tipo_profissional').text($('#tipo_participante').val());
-  
-  $('#socio_sbg').val('false');
-  $('#socio_sbmcta').val('false');
-  
-  if (fezUploadSbg) {
-    $('#resumo_socio').text('Sócio SBG');
-    $('#socio_sbg').val('true');
-  } else if (fezUploadSbmcta) {
-    $('#resumo_socio').text('Sócio SBMCTA');
-    $('#socio_sbmcta').val('true');
-  } else {
-    $('#resumo_socio').text('Não é sócio');
-  }
-  
-  $('#resumo_minicurso').text($('#id_minicurso').val());
 };

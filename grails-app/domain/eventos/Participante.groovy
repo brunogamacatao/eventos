@@ -12,7 +12,7 @@ class Participante extends Pessoa {
     boolean socioSbmcta
     MiniCurso miniCurso
     
-    static hasMany = [estados : EstadoInscricao]
+    static hasMany = [estados : EstadoInscricao, miniCursos : MiniCurso]
     
     static constraints = {
         socio(blank: false, inList: ["NÃO", "SIM"])

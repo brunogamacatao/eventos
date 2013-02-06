@@ -8,6 +8,10 @@
   <r:require module="wizard"/>
   <r:layoutResources/>
   <style type="text/css" media="screen">
+    .thumbnail {
+      padding: 0px;
+    }
+    
     .minicurso,.tipo_participante {
       margin: 0px;
     }
@@ -25,7 +29,8 @@
     }
     
     .titulo_minicurso {
-      height: 90px;
+      margin: 0;
+      padding: 0;
     }
     
     .professor_minicurso {
@@ -65,14 +70,6 @@
     </g:wizard>
   </g:form>
 
-  <g:render template="modalUpload" model="['tipo_profissional': 'aluno_graduacao','id': 'modal_aluno_grad',     'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 100]"/>
-  <g:render template="modalUpload" model="['tipo_profissional': 'aluno_pos_graduacao','id': 'modal_aluno_pos_grad', 'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 120]"/>
-  <g:render template="modalUpload" model="['tipo_profissional': 'aluno_pos_doc','id': 'modal_aluno_pos_doc',  'titulo': 'Envie o seu comprovante de matrícula digitalizado', 'valor': 140]"/>
-  <g:render template="modalUpload" model="['tipo_profissional': 'profissional','id': 'modal_medico',         'titulo': 'Envie o seu comprovante de atuação profissional digitalizado', 'valor': 160]"/>
-  
-  <g:render template="modalSocio" model="['tipoSocio': 'sbg']"/>
-  <g:render template="modalSocio" model="['tipoSocio': 'sbmcta']"/>
-  
   <g:render template="modalResumo"/>
   
   <r:layoutResources/>

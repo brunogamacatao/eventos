@@ -60,10 +60,12 @@ class InscricoesController {
       carregarArquivos(participante, params)
       
       if (params.id_minicurso && params.id_minicurso != '') {
-        def miniCurso = MiniCurso.findByIdentificador(params.id_minicurso)
-        participante.miniCurso = miniCurso
-        miniCurso.vagas--
-        miniCurso.save(flush: true, failOnError: true)
+        params.id_minicurso.split(",").each { id_minicurso -> 
+          def miniCurso = MiniCurso.findByIdentificador(id_minicurso)
+          participante.addToMiniCursos(miniCurso)
+          miniCurso.vagas--
+          miniCurso.save(flush: true, failOnError: true)
+        }
       }
       
       participante.save(flush: true, failOnError: true)
@@ -89,15 +91,17 @@ class InscricoesController {
     }
     
     private def calculaValorTotal(participante) {
-      def valorPorParticipante = ['aluno_graduacao'     : 100.0, 
-                                  'aluno_pos_graduacao' : 120.0, 
-                                  'aluno_pos_doc'       : 140.0, 
-                                  'profissional'        : 160.0]
+      def valorPorParticipante = ['Inscrição Comum'                  : 15.0, 
+                                  'Apresentação de Trabalho Interno' : 15.0, 
+                                  'Apresentação de Trabalho Externo' : 30.0, 
+                                  'Seção EXPO'                       : 10.0]
       
       def valorTotal = valorPorParticipante[participante.tipoParticipante]
 
-      if (participante.miniCurso) {
-        valorTotal += participante.miniCurso.valor
+      if (participante.miniCursos) {
+        participante.miniCursos.each { miniCurso -> 
+          valorTotal += miniCurso.valor
+        }
       }
 
       if (participante.socioSbmcta || participante.socioSbg) {

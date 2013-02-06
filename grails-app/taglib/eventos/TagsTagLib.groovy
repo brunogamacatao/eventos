@@ -118,6 +118,34 @@ class TagsTagLib {
       out << "</div>"
       out << "</li>"
     }
+
+    def caixaMinicursos = { attrs, body -> 
+      MiniCurso.findAllByCurso(attrs.curso).each { minicurso -> 
+        out << caixa([titulo: "${minicurso.titulo} (${minicurso.cargaHoraria} horas)", span: '6', class: 'minicurso']) {
+          out << "<p>${minicurso.vagas} vagas restantes</p>"
+          out << "<p><strong>Professor:</strong> ${minicurso.professor}<br/>"
+          out << "<strong>Local:</strong> ${minicurso.local}<br/>"
+          out << "<strong>Hora e data:</strong> ${minicurso.horario} - ${minicurso.data.format("dd 'de' MMMM 'de' yyyy")}</p>"
+          out << "<p><span class='label label-success'>"
+          out << g.formatNumber(number: minicurso.valor, type: 'currency', locale: 'pt_BR')
+          out << "</span></p>"
+          out << "<input type='hidden' class='id_minicurso' value='${minicurso.identificador}'/>"
+          if (minicurso.vagas > 0) {
+            out << "<p class='btn_marcar'><a href='#' class='btn btn-large btn-block btn-primary'>Escolher</a></p>"
+            out << "<p class='btn_desmarcar' style='display:none'><a href='#' class='btn btn-large btn-block btn-warning'>Desmarcar</a></p>"
+          } else {
+            out << "<h4>Vagas Esgotadas</h4>"
+          }
+        }
+      }
+    }
+    
+    def minicursosPorCurso = { attrs, body -> 
+      def curso = attrs.curso
+      out << caixas([id: "caixas_${curso}"]) {
+        out << caixaMinicursos([curso: curso])
+      }
+    }
     
     def botaoModal = { attrs -> 
       out << "<a href='#${attrs.idModal}' role='button' class='btn btn-large btn-block btn-primary botao_modal' data-toggle='modal'>"

@@ -7,6 +7,12 @@ class MiniCurso {
   int vagas
   double valor
   
+  String curso
+  int cargaHoraria
+  String local
+  Date data
+  String horario
+  
   def getParticipantesConfirmados() {
     def participantes = Participante.findAllByMiniCurso(this, [sort: "nome"])
     participantes.findAll { it.estadoAtual.estado == 'CONFIRMADO'}
@@ -22,5 +28,10 @@ class MiniCurso {
     professor(blank: false)
     vagas(min: 0)
     valor(min: 0.0d)
+    curso(blank: false)
+    cargaHoraria(min: (int)0)
+    local(blank: false)
+    data(blank: false)
+    horario(blank: false)
   }
 }

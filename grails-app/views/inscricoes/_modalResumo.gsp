@@ -23,36 +23,10 @@
       <span id='resumo_telefone'>Telefone</span> - 
       <span id='resumo_celular'>Celular</span><br/>
       <span id='resumo_email'>E-mail</span><br/>
-      <span id='resumo_tipo_profissional'>Tipo de Profissional</span><br/>
-      <span id='resumo_socio'>Sócio</span><br/>
-      <span id='resumo_minicurso'>Mini-curso</span>
+      <span id='resumo_tipo_profissional'>Tipo de Inscrição</span><br/>
     </address>
   </div>
   <div class="modal-body">
-    <p>
-      <h5>Caso você queira submeter um artigo para publicação, clique no botão abaixo para enviá-lo</h5>
-      <uploader:uploader id="artigo_upload" 
-                         allowedExtensions="${"['pdf', 'doc']"}"
-                         url="${[controller:'myUpload', action:'upload']}"
-                         params="${[tipo_arquivo: 'artigo']}">
-        <uploader:onSubmit>
-          $("#finalizar_btn").attr("disabled", "disabled");
-        </uploader:onSubmit>
-        <uploader:onProgress>console.log(loaded + ' of ' + total + ' done so far') </uploader:onProgress>
-        <uploader:onComplete>
-          alert('Seu artigo foi enviado com sucesso e ele será avaliado.');
-          $("#finalizar_btn").removeAttr("disabled");
-          $('#arquivo_artigo').val(fileName);
-        </uploader:onComplete>
-        <uploader:onCancel>
-          $("#finalizar_btn").removeAttr("disabled");
-          alert('Você cancelou o envio do arquivo');
-        </uploader:onCancel>
-        <uploader:noScript>
-          <p>O seu navegador não suporta a execução de scripts</p>
-        </uploader:noScript>
-      </uploader:uploader>
-    </p>
     <p style="text-align:center"><button id="finalizar_btn" type="button" class="btn btn-success">Finalizar Inscrição</button></p>
   </div>
 </div>

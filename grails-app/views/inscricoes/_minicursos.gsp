@@ -1,18 +1,27 @@
 <%@ page import="eventos.MiniCurso" %>
-<g:caixas>
-  <g:each var="minicurso" in="${MiniCurso.list(sort:"identificador")}">
-    <g:caixa titulo="${minicurso.titulo}" span="3" class="minicurso">
-      <p>${minicurso.vagas} vagas restantes</p>
-      <p class="professor_minicurso"><strong>Professor:</strong> ${minicurso.professor}</p>
-      <p><span class="label label-success"><g:formatNumber number="${minicurso.valor}" type="currency" locale="pt_BR"/></span></p>
-      <input type="hidden" class="id_minicurso" value="${minicurso.identificador}"/>
-      <g:if test="${minicurso.vagas > 0}">
-        <p class="btn_marcar"><a href="#" class="btn btn-large btn-block btn-primary">Escolher</a></p>
-        <p class="btn_desmarcar" style="display:none"><a href="#" class="btn btn-large btn-block btn-warning">Desmarcar</a></p>
-      </g:if>
-      <g:else>
-        <h4>Vagas Esgotadas</h4>
-      </g:else>
-    </g:caixa>
-  </g:each>
-</g:caixas>
+<h5>Curso:
+<select id="curso_minicurso">
+  <option>Selecione o Curso</option>
+  <option value="arquitetura">Arquitetura e Urbanismo</option>
+  <option value="administracao">Administração</option>
+  <option value="direito">Direito</option>
+  <option value="enfermagem">Enfermagem</option>
+  <option value="esac">Esac</option>
+  <option value="fisioterapia">Fisioterapia</option>
+  <option value="medicina">Medicina</option>
+  <option value="sistemas">Sistemas de Informação</option>
+  <option value="jogos">Jogos Digitais</option>
+  <option value="construcao">Construção de Edifícios</option>
+</select>
+</h5>
+<hr/>
+<g:minicursosPorCurso curso="arquitetura"/>
+<g:minicursosPorCurso curso="administracao"/>
+<g:minicursosPorCurso curso="direito"/>
+<g:minicursosPorCurso curso="enfermagem"/>
+<g:minicursosPorCurso curso="esac"/>
+<g:minicursosPorCurso curso="fisioterapia"/>
+<g:minicursosPorCurso curso="medicina"/>
+<g:minicursosPorCurso curso="sistemas"/>
+<g:minicursosPorCurso curso="jogos"/>
+<g:minicursosPorCurso curso="construcao"/>

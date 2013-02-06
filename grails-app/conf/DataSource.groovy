@@ -17,19 +17,19 @@ environments {
       username = "eventos"
       password = "eventos"
       dbCreate = "update" // one of 'create', 'create-drop','update'
-      url = "jdbc:mysql://localhost:3306/eventos"
+      url = "jdbc:mysql://localhost:3306/eventos?zeroDateTimeBehavior=convertToNull"
     }
   }
   test {
     dataSource {
       dbCreate = "update"
-      url = "jdbc:mysql://187.33.255.17:4406/eventos"
+      url = "jdbc:mysql://187.33.255.17:4406/eventos?zeroDateTimeBehavior=convertToNull"
     }
   }
   production {
     dataSource {
       dbCreate = "update"
-      url = "jdbc:mysql://localhost/eventos"
+      url = "jdbc:mysql://localhost/eventos?zeroDateTimeBehavior=convertToNull"
     }
   }
 }
