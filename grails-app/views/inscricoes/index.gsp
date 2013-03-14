@@ -42,6 +42,7 @@
   <g:form name="form_inscricao" controller="inscricoes" action="gerarBoleto" class="form-horizontal">
     <g:hiddenField name="id_minicurso"/>
     <g:hiddenField name="tipo_participante"/>
+    <g:hiddenField name="tipo_participante_cod"/>
     <g:hiddenField name="socio_sbg"/>
     <g:hiddenField name="socio_sbmcta"/>
     <g:hiddenField name="arquivo_comprovante"/>
@@ -53,7 +54,7 @@
         <g:wizardStep titulo="Dados Pessoais"/>
         <g:wizardStep titulo="Endereço e Contato"/>
         <g:wizardStep titulo="Tipo do Participante"/>
-        <g:wizardStep titulo="Minicursos"/>
+        <g:wizardStep titulo="Workshops"/>
       </g:wizardTitle>
       <g:wizardContent titulo="Dados Pessoais">
         <g:render template="dadosPessoais"/>

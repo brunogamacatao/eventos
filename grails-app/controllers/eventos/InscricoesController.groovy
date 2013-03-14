@@ -28,32 +28,33 @@ class InscricoesController {
     private def criarParticipante(params) {
       def participante = new Participante()
       
-      participante.nome               = params.nome_completo
-      participante.sexo               = params.sexo
-      participante.cpf                = params.cpf
-      participante.dataNascimento     = DATE_FORMAT.parse(params.data_de_nascimento)
-      participante.rg                 = params.rg
-      participante.orgaoEmissor       = params.orgao_emissor
-      participante.estadoRG           = params.estado_emissor
-      participante.estadoCivil        = params.estadoCivil
-      participante.nacionalidade      = "Brasileiro"
-      participante.pais               = "Brasil"
-      participante.estadoNaturalidade = params.estado_naturalidade
-      participante.cidadeNaturalidade = params.cidade_naturalidade
-      participante.cep                = params.cep
-      participante.endereco           = params.endereco
-      participante.numero             = params.numero
-      participante.complemento        = params.complemento
-      participante.bairro             = params.bairro
-      participante.cidade             = params.cidade
-      participante.estado             = params.estado
-      participante.telefone1          = params.telefone
-      participante.telefone2          = params.celular
-      participante.email              = params.email
-      participante.tipoParticipante   = params.tipo_participante
-      participante.socioSbg           = "true" == params.socio_sbg
-      participante.socioSbmcta        = "true" == params.socio_sbmcta
-      participante.socio              = (participante.socioSbg || participante.socioSbmcta) ? "SIM" : "NÃO"
+      participante.nome                = params.nome_completo
+      participante.sexo                = params.sexo
+      participante.cpf                 = params.cpf
+      participante.dataNascimento      = DATE_FORMAT.parse(params.data_de_nascimento)
+      participante.rg                  = params.rg
+      participante.orgaoEmissor        = params.orgao_emissor
+      participante.estadoRG            = params.estado_emissor
+      participante.estadoCivil         = params.estadoCivil
+      participante.nacionalidade       = "Brasileiro"
+      participante.pais                = "Brasil"
+      participante.estadoNaturalidade  = params.estado_naturalidade
+      participante.cidadeNaturalidade  = params.cidade_naturalidade
+      participante.cep                 = params.cep
+      participante.endereco            = params.endereco
+      participante.numero              = params.numero
+      participante.complemento         = params.complemento
+      participante.bairro              = params.bairro
+      participante.cidade              = params.cidade
+      participante.estado              = params.estado
+      participante.telefone1           = params.telefone
+      participante.telefone2           = params.celular
+      participante.email               = params.email
+      participante.tipoParticipante    = params.tipo_participante
+      participante.codTipoParticipante = params.tipo_participante_cod
+      participante.socioSbg            = "true" == params.socio_sbg
+      participante.socioSbmcta         = "true" == params.socio_sbmcta
+      participante.socio               = (participante.socioSbg || participante.socioSbmcta) ? "SIM" : "NÃO"
       
       participante.addToEstados(new EstadoInscricao(estado: 'PENDENTE'))
       
@@ -91,12 +92,12 @@ class InscricoesController {
     }
     
     private def calculaValorTotal(participante) {
-      def valorPorParticipante = ['Inscrição Comum'                  : 15.0, 
-                                  'Apresentação de Trabalho Interno' : 15.0, 
-                                  'Apresentação de Trabalho Externo' : 30.0, 
-                                  'Seção EXPO'                       : 10.0]
+      def valorPorParticipante = ['COMUM'            : 15.0, 
+                                  'TRABALHO_INTERNO' : 15.0, 
+                                  'TRABALHO_EXTERNO' : 30.0, 
+                                  'EXPO'             : 10.0]
       
-      def valorTotal = valorPorParticipante[participante.tipoParticipante]
+      def valorTotal = valorPorParticipante[participante.codTipoParticipante]
 
       if (participante.miniCursos) {
         participante.miniCursos.each { miniCurso -> 
@@ -112,7 +113,7 @@ class InscricoesController {
     }
     
     private def criarBoleto(participante) {
-      def dataVencimento = new Date()
+      def dataVencimento = new Date() + 5
       def valorTotal = calculaValorTotal(participante)
       def titulo = new Titulo(valor: valorTotal, vencimento: dataVencimento, participante: participante).save(flush: true, failOnError: true)
       def numeroDocumento = titulo.id

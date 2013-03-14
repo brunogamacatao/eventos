@@ -4,6 +4,7 @@ class Participante extends Pessoa {
 
     String socio
     String tipoParticipante
+    String codTipoParticipante
     Imagem comprovante
     Imagem comprovanteSocio
     Imagem artigo
@@ -12,7 +13,8 @@ class Participante extends Pessoa {
     boolean socioSbmcta
     MiniCurso miniCurso
     
-    static hasMany = [estados : EstadoInscricao, miniCursos : MiniCurso]
+    static hasMany    = [estados : EstadoInscricao, miniCursos : MiniCurso]
+    static transients = ['codTipoParticipante']
     
     static constraints = {
         socio(blank: false, inList: ["NÃO", "SIM"])

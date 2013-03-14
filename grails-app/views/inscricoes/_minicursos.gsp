@@ -1,7 +1,7 @@
 <%@ page import="eventos.MiniCurso" %>
 <h5>Curso:
 <select id="curso_minicurso">
-  <option>Selecione o Curso</option>
+  <option>Selecione o Workshop</option>
   <option value="arquitetura">Arquitetura e Urbanismo</option>
   <option value="administracao">Administração</option>
   <option value="direito">Direito</option>

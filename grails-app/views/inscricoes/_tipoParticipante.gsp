@@ -35,11 +35,4 @@
     </table>
   </div> 
   <hr/>
-  <div id="div_socio" style="display: none">  
-    <h4>Se você for sócio de uma das instituições abaixo, clique no botão correspondente</h4>
-    <p style="text-align: center">
-      <a href="#modal_sbg" role='button' class="btn btn-warning" data-toggle='modal'>SBG</a> &nbsp; 
-      <a href="#modal_sbmcta" role='button' class="btn btn-warning" data-toggle='modal'>SBMCTA</a>
-    </p>
-  </div>  
 </div>
