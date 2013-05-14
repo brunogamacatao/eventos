@@ -8,9 +8,9 @@ class Titulo {
     String linhaDigitavel = "5555"
     Date dateCreated
     Date lastUpdated
-    Participante participante
     
-    static hasMany = [pagamentos : Pagamento]
+    static belongsTo = [participante : Participante]
+    static hasMany   = [pagamentos : Pagamento]
     
     static constraints = {
         valor(blank: false)
@@ -23,6 +23,6 @@ class Titulo {
     def getPago() {
       def total = 0.0
       pagamentos.each { total += it.valor }
-      total >= valor
+      total >= 0.0
     }
 }

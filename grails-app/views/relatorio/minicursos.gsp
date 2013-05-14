@@ -13,6 +13,7 @@
           <th>Título</th>
           <th>Palestrante</th>
           <th>Participantes</th>
+          <th>Vagas Restantes</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,7 @@
             <td><g:link action="participantesMinicurso" id="${minicurso.id}">${minicurso.titulo}</g:link></td>
             <td>${minicurso.professor}</td>
             <td>${minicurso.quantidadeParticipantesConfirmados}</td>
+            <td>${minicurso.totalDeVagas - minicurso.quantidadeParticipantesConfirmados}</td>
           </tr>
         </g:each>
       </tbody>

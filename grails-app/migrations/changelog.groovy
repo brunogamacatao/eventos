@@ -639,4 +639,8 @@ databaseChangeLog = {
 			column(name: "username")
 		}
 	}
+
+	include file: 'AddTotalDeVagasToMiniCurso'
+
+	include file: 'AddTotalDeVagasToMiniCurso.groovy'
 }

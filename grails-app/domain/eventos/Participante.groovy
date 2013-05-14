@@ -12,8 +12,9 @@ class Participante extends Pessoa {
     boolean socioSbg
     boolean socioSbmcta
     MiniCurso miniCurso
-    
-    static hasMany    = [estados : EstadoInscricao, miniCursos : MiniCurso]
+
+    static belongsTo  = [MiniCurso]
+    static hasMany    = [estados : EstadoInscricao, miniCursos : MiniCurso, titulos: Titulo]
     static transients = ['codTipoParticipante']
     
     static constraints = {

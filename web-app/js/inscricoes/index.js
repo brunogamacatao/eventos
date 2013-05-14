@@ -59,31 +59,31 @@ $(document).ready(function(){
     $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
     exibirTotal();
   });
-  $('#botao_aluno_pos_grad').click(function() {
-    $('#tipo_participante').val("Apresentação de Trabalho Interno");
-    $('#tipo_participante_cod').val("TRABALHO_INTERNO");
-    fezUpload = true;
-    total    += 15;
-    $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
-    exibirTotal();
-  });
-  $('#botao_aluno_pos_doc').click(function() {
-    $('#tipo_participante').val("Apresentação de Trabalho Externo");
-    $('#tipo_participante_cod').val("TRABALHO_EXTERNO");
-    fezUpload = true;
-    total    += 30;
-    $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
-    exibirTotal();
-  });
-  $('#botao_profissional').click(function() {
-    $('#tipo_participante').val("Seção EXPO");
-    $('#tipo_participante_cod').val("EXPO");
-    fezUpload = true;
-    total    += 10;
-//    $("#div_socio").show();
-    $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
-    exibirTotal();
-  });
+  // $('#botao_aluno_pos_grad').click(function() {
+  //   $('#tipo_participante').val("Apresentação de Trabalho Interno");
+  //   $('#tipo_participante_cod').val("TRABALHO_INTERNO");
+  //   fezUpload = true;
+  //   total    += 15;
+  //   $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
+  //   exibirTotal();
+  // });
+  // $('#botao_profissional').click(function() {
+  //   $('#tipo_participante').val("Apresentação de Trabalho Externo");
+  //   $('#tipo_participante_cod').val("TRABALHO_EXTERNO");
+  //   fezUpload = true;
+  //   total    += 30;
+  //   $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
+  //   exibirTotal();
+  // });
+//   $('#botao_aluno_pos_doc').click(function() {
+//     $('#tipo_participante').val("Seção EXPO");
+//     $('#tipo_participante_cod').val("EXPO");
+//     fezUpload = true;
+//     total    += 10;
+// //    $("#div_socio").show();
+//     $('#div_caixas').html(criarAlerta("Sucesso!", "Sua opção foi registrada !"));
+//     exibirTotal();
+//   });
   
   $('.btn_marcar').click(function(){
     // Desmarcar tudo

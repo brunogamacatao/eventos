@@ -65,9 +65,9 @@
       <g:wizardContent titulo="Tipo do Participante">
         <g:render template="tipoParticipante"/>
       </g:wizardContent>
-      <g:wizardContent titulo="Minicursos">
-        <g:render template="minicursos"/>
-      </g:wizardContent>
+      <!--g:wizardContent titulo="Minicursos"-->
+        <!--g:render template="minicursos"/-->
+      <!--/g:wizardContent-->
     </g:wizard>
   </g:form>
 

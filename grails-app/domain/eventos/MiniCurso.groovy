@@ -5,6 +5,7 @@ class MiniCurso {
   String titulo
   String professor
   int vagas
+  int totalDeVagas
   double valor
   
   String curso
@@ -13,9 +14,23 @@ class MiniCurso {
   Date data
   String horario
   
+  def getParticipantes() {
+    Participante.findAllByMiniCurso(this)
+  }
+  
   def getParticipantesConfirmados() {
-    def participantes = Participante.findAllByMiniCurso(this, [sort: "nome"])
-    participantes.findAll { it.estadoAtual.estado == 'CONFIRMADO'}
+    def pList = [] as Set
+    def that  = this
+    
+    Participante.list().each { participante -> 
+      participante.miniCursos.each { miniCurso ->
+        if (miniCurso.id == that.id && participante.estadoAtual.estado == 'CONFIRMADO') {
+            pList << participante
+        }
+      }
+    }
+    
+    pList.asList().sort { it.nome }
   }
   
   def getQuantidadeParticipantesConfirmados() {
