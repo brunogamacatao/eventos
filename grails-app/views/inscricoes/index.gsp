@@ -51,11 +51,15 @@
     
     <g:wizard>
       <g:wizardTitle>
+        <g:wizardStep titulo="Reemitir Boleto"/>
         <g:wizardStep titulo="Dados Pessoais"/>
         <g:wizardStep titulo="Endereço e Contato"/>
         <g:wizardStep titulo="Tipo do Participante"/>
-        <g:wizardStep titulo="Workshops"/>
+        <!--g:wizardStep titulo="Workshops"/-->
       </g:wizardTitle>
+      <g:wizardContent titulo="Reemitir Boleto">
+        <g:render template="reemitirBoleto"/>
+      </g:wizardContent>
       <g:wizardContent titulo="Dados Pessoais">
         <g:render template="dadosPessoais"/>
       </g:wizardContent>
@@ -71,6 +75,7 @@
     </g:wizard>
   </g:form>
 
+  <g:render template="modalReemitir"/>
   <g:render template="modalResumo"/>
   
   <r:layoutResources/>

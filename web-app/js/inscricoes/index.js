@@ -18,13 +18,14 @@ $(document).ready(function(){
     var step_num = obj.attr('rel');
     
     if (step_num == 3) {
-      if (!fezUpload) {
-        alert("Você deve enviar o comprovante para que possa terminar a inscrição");
-      }
-      
-      exibirTotal();
-      
-      return fezUpload;
+      // if (!fezUpload) {
+      //   alert("Você deve enviar o comprovante para que possa terminar a inscrição");
+      // }
+      // 
+      // exibirTotal();
+      // 
+      // return fezUpload;
+      return true;
     } else {
       var valid = $("#form_inscricao").validationEngine('validate');
       
@@ -48,8 +49,22 @@ $(document).ready(function(){
   //Aplicando mascaras aos campos
   $('#data_de_nascimento').mask("99/99/9999");
   $('#cpf').mask('999.999.999-99');
+  $('#cpf_reemitir').mask('999.999.999-99');
   $('#cep').mask('99999-999');
   $('.telefone').mask('(99)9999-9999');
+  
+  $('#reemitir_boleto').click(function(e) {
+    e.preventDefault();
+    var cpf = $('#cpf_reemitir').val();
+    
+    if (cpf === '') {
+      alert('O campo CPF deve ser preenchido');
+    } else {
+      reemitirBoleto(cpf);
+    }
+    
+    return false;
+  });
   
   $('#botao_aluno_grad').click(function() {
     $('#tipo_participante').val("Inscrição Comum");
@@ -235,4 +250,15 @@ var montaResumo = function() {
   
   console.log('montando resumo dos dados profissionais ...');
   $('#resumo_tipo_profissional').text($('#tipo_participante').val());
+};
+
+var reemitirBoleto = function(cpf) {
+  $('#modal_reemitir').modal('show');
+  $.getJSON('/eventos/inscricoes/estaInscrito?cpf=' + cpf, function(data) {
+    if (data.resposta === true) {
+      window.location = '/eventos/inscricoes/exibirBoleto?cpf=' + cpf;
+    } else {
+      $('#modalReemitirLabel').html('Participante não cadastrado');
+    }
+  });
 };

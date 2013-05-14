@@ -1,6 +1,7 @@
 package eventos
 
 import java.text.SimpleDateFormat
+import grails.converters.JSON
 
 import util.boleto.*
 
@@ -23,6 +24,22 @@ class InscricoesController {
       def (boleto, banco) = criarBoleto(participante)
 
       render(view: banco.getTemplateName(), model: [boleto: boleto, banco: banco, participante: participante])
+    }
+    
+    def exibirBoleto = {
+      def cpf = params.cpf
+      def participante = Participante.findAllByCpf(cpf).last()
+      
+      println participante
+      println participante.codTipoParticipante
+      
+      def (boleto, banco) = criarBoleto(participante)
+      render(view: banco.getTemplateName(), model: [boleto: boleto, banco: banco, participante: participante])
+    }
+    
+    def estaInscrito = {
+      def resposta = [resposta: Participante.findByCpf(params.cpf) != null]
+      render resposta as JSON
     }
     
     private def criarParticipante(params) {
@@ -114,8 +131,17 @@ class InscricoesController {
     
     private def criarBoleto(participante) {
       def dataVencimento = new Date() + 5
-      def valorTotal = calculaValorTotal(participante)
-      def titulo = new Titulo(valor: valorTotal, vencimento: dataVencimento, participante: participante).save(flush: true, failOnError: true)
+      def valorTotal     = null
+      def titulo         = null
+      
+      if (participante.titulos && participante.titulos.size() > 0) {
+        titulo     = participante.titulos.toArray()[participante.titulos.size() - 1]
+        valorTotal = titulo.valor
+      } else {
+        valorTotal = calculaValorTotal(participante)
+        titulo = new Titulo(valor: valorTotal, vencimento: dataVencimento, participante: participante).save(flush: true, failOnError: true)
+      }
+      
       def numeroDocumento = titulo.id
 
       def boleto = Boleto.getInstance {
